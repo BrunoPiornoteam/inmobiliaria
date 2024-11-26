@@ -1,0 +1,57 @@
+/* Contenedor principal para la página de administración */
+.dashboard-container {
+    text-align: center;
+    margin-top: 50px;
+}
+
+.welcome-title {
+    font-size: 36px;
+    font-weight: bold;
+    color: #2c3e50;
+    margin-bottom: 20px;
+}
+
+.welcome-description {
+    font-size: 18px;
+    color: #7f8c8d;
+}
+
+/* Estilos para los botones de navegación */
+.navigation-buttons {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+    margin-bottom: 40px;
+}
+
+.nav-button {
+    background-color: #3498db; /* Color principal */
+    color: white;
+    padding: 15px 30px;
+    font-size: 16px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Sombra suave */
+    width: 22%; /* Hace que los botones estén más equilibrados */
+    text-align: center;
+}
+
+.nav-button:hover {
+    background-color: #2980b9;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2); /* Efecto hover con sombra más pronunciada */
+    transform: translateY(-2px); /* Efecto de "levantamiento" en hover */
+}
+
+/* Diseño responsivo para los botones */
+@media (max-width: 768px) {
+    .navigation-buttons {
+        flex-direction: column;
+    }
+
+    .nav-button {
+        width: 100%;
+        margin: 10px 0;
+    }
+}
