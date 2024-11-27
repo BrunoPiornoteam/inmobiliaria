@@ -11,7 +11,7 @@
 
 <div class="navigation-buttons">
     <button class="nav-button" onclick="window.location.href='propiedades.php'">Propiedades</button>
+    <button class="nav-button" onclick="window.location.href='clientes.php'">Clientes</button>
     <button class="nav-button" onclick="window.location.href='contratos.php'">Contratos</button>
     <button class="nav-button" onclick="window.location.href='pagos.php'">Pagos</button>
-    <button class="nav-button" onclick="window.location.href='clientes.php'">Clientes</button>
 </div>

@@ -21,8 +21,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     echo "Propiedad agregada con éxito.";
 }
+
+$stmt = $pdo->query("SELECT * FROM propiedades");
+$propiedades = $stmt->fetchAll(PDO::FETCH_ASSOC);
 ?>
 
+<h1>Agregar Propiedad</h1>
 <form method="POST" enctype="multipart/form-data">
     <input type="text" name="titulo" placeholder="Título" required>
     <textarea name="descripcion" placeholder="Descripción" required></textarea>
@@ -37,3 +41,38 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <input type="file" name="imagenes[]" multiple>
     <button type="submit">Agregar Propiedad</button>
 </form>
+<h2>Listado de Propiedades</h2>
+<table>
+    <thead>
+        <tr>
+            <th>Título</th>
+            <th>Descripción</th>
+            <th>Precio</th>
+            <th>Tipo</th>
+            <th>Ubicación</th>
+            <th>Tamaño (m2)</th>
+            <th>Imágenes</th>
+        </tr>
+    </thead>
+    <tbody>
+        <?php foreach ($propiedades as $propiedad): ?>
+            <tr>
+                <td><?php echo htmlspecialchars($propiedad['titulo']); ?></td>
+                <td><?php echo htmlspecialchars($propiedad['descripcion']); ?></td>
+                <td><?php echo htmlspecialchars($propiedad['precio']); ?></td>
+                <td><?php echo htmlspecialchars($propiedad['tipo']); ?></td>
+                <td><?php echo htmlspecialchars($propiedad['ubicacion']); ?></td>
+                <td><?php echo htmlspecialchars($propiedad['tamano']); ?></td>
+                <td>
+                    <?php 
+                    $imagenes = explode(',', $propiedad['imagenes']);
+                    foreach ($imagenes as $imagen): ?>
+                        <img src="uploads/<?php echo htmlspecialchars($imagen); ?>" alt="Imagen de la propiedad" width="100">
+                    <?php endforeach; ?>
+                </td>
+            </tr>
+        <?php endforeach; ?>
+    </tbody>
+</table>
+
+<?php include('includes/footer.php'); ?>
