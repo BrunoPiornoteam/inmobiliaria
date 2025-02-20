@@ -1,20 +1,20 @@
 <?php
 // Conexión a la base de datos (ajusta los parámetros)
 $host = 'localhost';
-$dbname = 'inmobiliaria';  // El nombre de tu base de datos
-$username = 'root';  // Tu usuario de MySQL
-$password = 'root';  // Tu contraseña de MySQL
+$dbname = 'inmobiliaria';  
+$username = 'root';  
+$password = 'root';  
 
 try {
     $pdo = new PDO("mysql:host=$host;dbname=$dbname", $username, $password);
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     
     // Datos del nuevo usuario
-    $nombre_usuario = 'admin';  // Nombre de usuario que desees
-    $email = 'admin@inmobiliaria.com';  // Correo del usuario
-    $contrasena = 'admin123';  // Contraseña en texto plano
-    $rol = 'administrador'; // Rol del usuario
-    $fecha_creacion = date('Y-m-d H:i:s'); // Fecha de creación actual
+    $nombre_usuario = 'admin';  
+    $email = 'admin@inmobiliaria.com';  
+    $contrasena = 'admin123';  
+    $rol = 'administrador'; 
+    $fecha_creacion = date('Y-m-d H:i:s'); 
 
     // Encriptar la contraseña
     $contrasena_hash = password_hash($contrasena, PASSWORD_DEFAULT);
