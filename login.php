@@ -31,13 +31,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login - Inmobiliaria</title>
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="dist/css/app.css">
 </head>
 <body>
     <div class="login-container">
         <!-- Logo y texto descriptivo del sistema inmobiliario -->
         <div class="logo-container">
-            <img src="uploads/inmobiliaria.svg" alt="Logo Inmobiliaria" class="logo-inm">
+            <img src="src/uploads/inmobiliaria.svg" alt="Logo Inmobiliaria" class="logo-inm">
             <h3 class="system-description">Sistema Inmobiliario</h3>
         </div>
 

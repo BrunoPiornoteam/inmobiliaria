@@ -1,4 +1,5 @@
-/* Reset CSS básico */
+@use 'variables' as *;
+
 * {
     margin: 0;
     padding: 0;
@@ -6,7 +7,7 @@
 }
 
 body {
-    font-family: 'Arial', sans-serif;
+    font-family: $fuente-principal;
     background: linear-gradient(135deg, #6d7b8d, #1f2a36);
     min-height: 100vh;
     display: flex;
@@ -171,6 +172,3 @@ button[type="submit"]:hover {
         margin: 10px 0;
     }
 }
-
-
-

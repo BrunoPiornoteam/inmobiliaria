@@ -16,7 +16,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     foreach ($_FILES['imagenes']['tmp_name'] as $key => $tmp_name) {
         $file_name = $_FILES['imagenes']['name'][$key];
-        move_uploaded_file($tmp_name, "uploads/$file_name");
+        move_uploaded_file($tmp_name, "src/uploads/$file_name");
     }
 
     echo "Propiedad agregada con éxito.";

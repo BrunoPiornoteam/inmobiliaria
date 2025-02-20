@@ -1,0 +1,170 @@
+@charset "UTF-8";
+/* Reset CSS básico */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Arial", sans-serif;
+  background: linear-gradient(135deg, #6d7b8d, #1f2a36);
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Estilo del contenedor del login */
+.login-container {
+  background: rgba(255, 255, 255, 0.9);
+  padding: 40px;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  max-width: 400px;
+  width: 100%;
+  text-align: center;
+}
+
+h2 {
+  font-size: 28px;
+  font-weight: 600;
+  color: #333;
+}
+
+/* Estilo para los inputs */
+input[type=text],
+input[type=password] {
+  width: 100%;
+  padding: 12px 18px;
+  margin: 10px 0;
+  border: 2px solid #ddd;
+  border-radius: 5px;
+  font-size: 16px;
+  transition: border 0.3s ease;
+}
+
+/* Estilo para cuando el input está enfocado */
+input[type=text]:focus,
+input[type=password]:focus {
+  border-color: #3498db;
+  outline: none;
+}
+
+/* Botón de login */
+button[type=submit] {
+  background-color: #3498db;
+  color: white;
+  padding: 15px 20px;
+  border: none;
+  border-radius: 5px;
+  width: 100%;
+  cursor: pointer;
+  font-size: 18px;
+  transition: background-color 0.3s ease;
+}
+
+/* Estilo para el hover del botón */
+button[type=submit]:hover {
+  background-color: #45a049;
+}
+
+/* Estilo para mostrar el mensaje de error */
+.error {
+  color: red;
+  margin-top: 15px;
+  font-size: 16px;
+}
+
+/* Animación para el contenedor */
+@keyframes slideUp {
+  0% {
+    transform: translateY(100px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+.login-container {
+  animation: slideUp 0.5s ease-out;
+}
+
+.logo-inm {
+  width: 100px;
+}
+
+/* Media queries para dispositivos pequeños */
+@media (max-width: 600px) {
+  .login-container {
+    padding: 30px;
+  }
+  h2 {
+    font-size: 24px;
+  }
+  input[type=text],
+  input[type=password] {
+    font-size: 14px;
+    padding: 10px 15px;
+  }
+  button[type=submit] {
+    font-size: 16px;
+  }
+}
+/* Contenedor principal para la página de administración */
+.dashboard-container {
+  text-align: center;
+  margin-top: 50px;
+}
+
+.welcome-title {
+  font-size: 36px;
+  font-weight: bold;
+  color: #2c3e50;
+  margin-bottom: 20px;
+}
+
+.welcome-description {
+  font-size: 18px;
+  color: #7f8c8d;
+}
+
+/* Estilos para los botones de navegación */
+.navigation-buttons {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+  margin-bottom: 40px;
+}
+
+.nav-button {
+  background-color: #3498db;
+  color: white;
+  padding: 15px 30px;
+  font-size: 16px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Sombra suave */
+  width: 22%; /* Hace que los botones estén más equilibrados */
+  text-align: center;
+}
+
+.nav-button:hover {
+  background-color: #2980b9;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2); /* Efecto hover con sombra más pronunciada */
+  transform: translateY(-2px); /* Efecto de "levantamiento" en hover */
+}
+
+/* Diseño responsivo para los botones */
+@media (max-width: 768px) {
+  .navigation-buttons {
+    flex-direction: column;
+  }
+  .nav-button {
+    width: 100%;
+    margin: 10px 0;
+  }
+}

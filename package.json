@@ -1,0 +1,30 @@
+{
+  "name": "inmobiliaria",
+  "version": "1.0.0",
+  "description": "Sistema inmobiliario para gestionar propiedades, contratos, pagos y clientes",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "dev": "gulp dev"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/BrunoPiornoteam/inmobiliaria.git"
+  },
+  "keywords": [
+    "SASS",
+    "NPM",
+    "Gulp"
+  ],
+  "author": "Nahuel Farias (nahuelfariasc@gmail.com) & Bruno Piorno Polucci(brunopiornop@gmail.com)",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/BrunoPiornoteam/inmobiliaria/issues"
+  },
+  "homepage": "https://github.com/BrunoPiornoteam/inmobiliaria#readme",
+  "devDependencies": {
+    "gulp": "^5.0.0",
+    "gulp-sass": "^6.0.0",
+    "sass": "^1.85.0"
+  }
+}
