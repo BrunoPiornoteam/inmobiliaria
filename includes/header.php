@@ -21,9 +21,49 @@ $user = $stmt->fetch(PDO::FETCH_ASSOC);
         <a href="logout.php">Cerrar sesión</a>
     </div>
 
-    <button class="nav-button" onclick="window.location.href='dashboard.php'">Inicio</button>
-    <button class="nav-button" onclick="window.location.href='propiedades.php'">Propiedades</button>
-    <button class="nav-button" onclick="window.location.href='clientes.php'">Clientes</button>
-    <button class="nav-button" onclick="window.location.href='contratos.php'">Contratos</button>
-    <button class="nav-button" onclick="window.location.href='pagos.php'">Pagos</button>
+    <div class="nav-container">
+        <div class="nav-item">
+            <button class="nav-button">Propiedades</button>
+            <div class="submenu">
+                <a href="propiedades.php">Ver propiedades</a>
+                <a href="agregar_propiedad.php">Agregar propiedad</a>
+                <a href="tipos_propiedades.php">Tipos de propiedad</a>
+                <a href="zonas.php">Zonas</a>
+            </div>
+        </div>
+
+        <div class="nav-item">
+            <button class="nav-button">Clientes</button>
+            <div class="submenu">
+                <a href="clientes.php">Lista de clientes</a>
+                <a href="agregar_cliente.php">Agregar cliente</a>
+            </div>
+        </div>
+
+        <div class="nav-item">
+            <button class="nav-button">Contratos</button>
+            <div class="submenu">
+                <a href="contratos.php">Ver contratos</a>
+                <a href="crear_contrato.php">Adjuntar contrato</a>
+                <a href="documentos.php">Documentos adjuntos</a>
+            </div>
+        </div>
+
+        <div class="nav-item">
+            <button class="nav-button">Pagos</button>
+            <div class="submenu">
+                <a href="pagos.php">Historial de pagos</a>
+                <a href="metodos_pago.php">Métodos de pago</a>
+                <a href="facturacion.php">Facturación</a>
+            </div>
+        </div>
+
+        <div class="nav-item">
+            <button class="nav-button">Configuración</button>
+            <div class="submenu">
+                <a href="configuracion.php">Ajustes generales</a>
+                <a href="soporte.php">Soporte</a>
+            </div>
+        </div>
+    </div>
 </div>
