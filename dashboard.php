@@ -24,7 +24,7 @@ if (!$user) {
     
     <p>Bienvenido, <?php echo htmlspecialchars(isset($user['username']) ? $user['username'] : 'Usuario'); ?>.</p>
 
-    <p><a href="logout.php">Cerrar sesión</a></p>
+    <p><a href="logout.php" class="button--blue">Cerrar sesión</a></p>
 </div>
 
 <?php include('includes/footer.php'); ?>

@@ -1,0 +1,22 @@
+@use 'base/variables' as v;
+
+.dashboard-container {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.welcome-title {
+    font-size: 36px;
+    font-weight: bold;
+    color: v.$black;
+    margin-bottom: 20px;
+}
+
+.welcome-description {
+    font-size: 18px;
+    color: #7f8c8d;
+}

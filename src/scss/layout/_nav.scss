@@ -1,0 +1,38 @@
+@use 'base/variables' as v;
+
+/* Estilos para los botones de navegación */
+.navigation-buttons {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 25%;
+    padding: 40px 20px;
+    background: v.$backgorund-bar;
+}
+
+.nav-button {
+    background-color: v.$grey; 
+    color: v.$white;
+    padding: 15px 30px;
+    font-size: 16px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-align: center;
+
+    &:hover {
+        background-color: v.$mainc;
+    }
+}
+
+@media (max-width: 768px) {
+    .navigation-buttons {
+        flex-direction: column;
+    }
+
+    .nav-button {
+        width: 100%;
+        margin: 10px 0;
+    }
+}

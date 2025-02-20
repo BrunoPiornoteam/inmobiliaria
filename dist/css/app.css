@@ -1,38 +1,377 @@
 @charset "UTF-8";
-/* Reset CSS básico */
-* {
-  margin: 0;
-  padding: 0;
+/*! modern-normalize v3.0.1 | MIT License | https://github.com/sindresorhus/modern-normalize */
+/*
+Document
+========
+*/
+/**
+Use a better box model (opinionated).
+*/
+*,
+::before,
+::after {
   box-sizing: border-box;
 }
 
-body {
-  font-family: "Arial", sans-serif;
-  background: linear-gradient(135deg, #6d7b8d, #1f2a36);
-  min-height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+html {
+  /* Improve consistency of default fonts in all browsers. (https://github.com/sindresorhus/modern-normalize/issues/3) */
+  font-family: system-ui, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+  line-height: 1.15; /* 1. Correct the line height in all browsers. */
+  -webkit-text-size-adjust: 100%; /* 2. Prevent adjustments of font size after orientation changes in iOS. */
+  tab-size: 4; /* 3. Use a more readable tab size (opinionated). */
 }
 
-/* Estilo del contenedor del login */
-.login-container {
+/*
+Sections
+========
+*/
+body {
+  margin: 0; /* Remove the margin in all browsers. */
+}
+
+/*
+Text-level semantics
+====================
+*/
+/**
+Add the correct font weight in Chrome and Safari.
+*/
+b,
+strong {
+  font-weight: bolder;
+}
+
+/**
+1. Improve consistency of default fonts in all browsers. (https://github.com/sindresorhus/modern-normalize/issues/3)
+2. Correct the odd 'em' font sizing in all browsers.
+*/
+code,
+kbd,
+samp,
+pre {
+  font-family: ui-monospace, SFMono-Regular, Consolas, "Liberation Mono", Menlo, monospace; /* 1 */
+  font-size: 1em; /* 2 */
+}
+
+/**
+Add the correct font size in all browsers.
+*/
+small {
+  font-size: 80%;
+}
+
+/**
+Prevent 'sub' and 'sup' elements from affecting the line height in all browsers.
+*/
+sub,
+sup {
+  font-size: 75%;
+  line-height: 0;
+  position: relative;
+  vertical-align: baseline;
+}
+
+sub {
+  bottom: -0.25em;
+}
+
+sup {
+  top: -0.5em;
+}
+
+/*
+Tabular data
+============
+*/
+/**
+Correct table border color inheritance in Chrome and Safari. (https://issues.chromium.org/issues/40615503, https://bugs.webkit.org/show_bug.cgi?id=195016)
+*/
+table {
+  border-color: currentcolor;
+}
+
+/*
+Forms
+=====
+*/
+/**
+1. Change the font styles in all browsers.
+2. Remove the margin in Firefox and Safari.
+*/
+button,
+input,
+optgroup,
+select,
+textarea {
+  font-family: inherit; /* 1 */
+  font-size: 100%; /* 1 */
+  line-height: 1.15; /* 1 */
+  margin: 0; /* 2 */
+}
+
+/**
+Correct the inability to style clickable types in iOS and Safari.
+*/
+button,
+[type=button],
+[type=reset],
+[type=submit] {
+  -webkit-appearance: button;
+}
+
+/**
+Remove the padding so developers are not caught out when they zero out 'fieldset' elements in all browsers.
+*/
+legend {
+  padding: 0;
+}
+
+/**
+Add the correct vertical alignment in Chrome and Firefox.
+*/
+progress {
+  vertical-align: baseline;
+}
+
+/**
+Correct the cursor style of increment and decrement buttons in Safari.
+*/
+::-webkit-inner-spin-button,
+::-webkit-outer-spin-button {
+  height: auto;
+}
+
+/**
+1. Correct the odd appearance in Chrome and Safari.
+2. Correct the outline style in Safari.
+*/
+[type=search] {
+  -webkit-appearance: textfield; /* 1 */
+  outline-offset: -2px; /* 2 */
+}
+
+/**
+Remove the inner padding in Chrome and Safari on macOS.
+*/
+::-webkit-search-decoration {
+  -webkit-appearance: none;
+}
+
+/**
+1. Correct the inability to style clickable types in iOS and Safari.
+2. Change font properties to 'inherit' in Safari.
+*/
+::-webkit-file-upload-button {
+  -webkit-appearance: button; /* 1 */
+  font: inherit; /* 2 */
+}
+
+/*
+Interactive
+===========
+*/
+/*
+Add the correct display in Chrome and Safari.
+*/
+summary {
+  display: list-item;
+}
+
+html {
+  font-size: 62.5%;
+  box-sizing: border-box;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+  margin: 0;
+}
+
+body {
+  font-family: "Poppins", serif;
+  font-size: 1.6rem;
   background: rgba(255, 255, 255, 0.9);
-  padding: 40px;
-  border-radius: 10px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  max-width: 400px;
-  width: 100%;
-  text-align: center;
+  min-height: 100dvh;
+  display: flex;
+}
+
+p {
+  font-size: 2rem;
+  color: #2f353d;
+  line-height: 1.8;
+}
+
+.container {
+  width: 90%;
+  max-width: 140rem;
+  margin: 0 auto;
+}
+
+a {
+  text-decoration: none;
+}
+a:hover {
+  cursor: pointer;
+}
+
+h1, h2, h3 {
+  margin: 0 0 5rem 0;
+}
+
+h1 {
+  font-size: 4rem;
+  font-weight: 400;
+  line-height: 1.4;
+}
+@media (min-width: 768px) {
+  h1 {
+    font-size: 6rem;
+  }
+}
+@media (min-width: 992px) {
+  h1 {
+    font-size: 9.5rem;
+  }
 }
 
 h2 {
-  font-size: 28px;
-  font-weight: 600;
-  color: #333;
+  font-size: 3.4rem;
+  font-weight: 500;
+}
+@media (min-width: 992px) {
+  h2 {
+    font-size: 5.4rem;
+  }
 }
 
-/* Estilo para los inputs */
+h3 {
+  font-size: 2.4rem;
+}
+@media (min-width: 992px) {
+  h3 {
+    font-size: 3.2rem;
+  }
+}
+
+h4 {
+  font-size: 1.8rem;
+  text-transform: uppercase;
+  font-weight: 500;
+}
+@media (min-width: 768px) {
+  h4 {
+    font-size: 2.5rem;
+  }
+}
+
+img {
+  max-width: 100%;
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+body {
+  background-color: #e5e5e5;
+}
+
+section {
+  margin-top: 5rem;
+}
+@media (min-width: 768px) {
+  section {
+    margin-top: 10rem;
+  }
+}
+
+.button--yellow {
+  font-family: "Poppins", serif;
+  background-color: #d3a971;
+  color: #fff;
+  font-size: 1.6rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  text-decoration: none;
+  letter-spacing: 0.05rem;
+  padding: 0 2rem;
+  text-align: center;
+  border: none;
+  border-radius: 3rem;
+  width: 20rem;
+  height: 6rem;
+  padding: 1rem 1.5rem;
+}
+.button--yellow:hover {
+  cursor: pointer;
+  background-color: #3498db;
+  transition: 1s ease;
+}
+
+.button--blue {
+  font-family: "Poppins", serif;
+  background-color: #3498db;
+  color: #fff;
+  font-size: 1.6rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  text-decoration: none;
+  letter-spacing: 0.05rem;
+  padding: 0 2rem;
+  text-align: center;
+  border: none;
+  border-radius: 3rem;
+  width: 20rem;
+  height: 6rem;
+  padding: 1rem 1.5rem;
+}
+.button--blue:hover {
+  cursor: pointer;
+  background-color: #d3a971;
+  transition: 1s ease;
+}
+
+.button--white {
+  font-family: "Poppins", serif;
+  background-color: #fff;
+  color: #2f353d;
+  font-size: 1.6rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  text-decoration: none;
+  letter-spacing: 0.05rem;
+  padding: 0 2rem;
+  text-align: center;
+  border: none;
+  border-radius: 3rem;
+  width: 20rem;
+  height: 6rem;
+  padding: 1rem 1.5rem;
+}
+.button--white:hover {
+  cursor: pointer;
+  background-color: #3498db;
+  transition: 1s ease;
+}
+
+button[type=submit] {
+  background-color: #d3a971;
+  color: white;
+  padding: 15px 20px;
+  border: none;
+  border-radius: 5px;
+  width: 100%;
+  cursor: pointer;
+  font-size: 18px;
+  transition: all 0.3s ease;
+}
+
+button[type=submit]:hover {
+  background-color: #3498db;
+}
+
+/* Inputs */
 input[type=text],
 input[type=password] {
   width: 100%;
@@ -44,29 +383,10 @@ input[type=password] {
   transition: border 0.3s ease;
 }
 
-/* Estilo para cuando el input está enfocado */
 input[type=text]:focus,
 input[type=password]:focus {
-  border-color: #3498db;
+  border-color: #d3a971;
   outline: none;
-}
-
-/* Botón de login */
-button[type=submit] {
-  background-color: #3498db;
-  color: white;
-  padding: 15px 20px;
-  border: none;
-  border-radius: 5px;
-  width: 100%;
-  cursor: pointer;
-  font-size: 18px;
-  transition: background-color 0.3s ease;
-}
-
-/* Estilo para el hover del botón */
-button[type=submit]:hover {
-  background-color: #45a049;
 }
 
 /* Estilo para mostrar el mensaje de error */
@@ -76,7 +396,16 @@ button[type=submit]:hover {
   font-size: 16px;
 }
 
-/* Animación para el contenedor */
+.login-container {
+  background: rgba(255, 255, 255, 0.9);
+  padding: 40px;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  max-width: 400px;
+  width: 100%;
+  text-align: center;
+}
+
 @keyframes slideUp {
   0% {
     transform: translateY(100px);
@@ -95,7 +424,6 @@ button[type=submit]:hover {
   width: 100px;
 }
 
-/* Media queries para dispositivos pequeños */
 @media (max-width: 600px) {
   .login-container {
     padding: 30px;
@@ -112,16 +440,19 @@ button[type=submit]:hover {
     font-size: 16px;
   }
 }
-/* Contenedor principal para la página de administración */
 .dashboard-container {
   text-align: center;
-  margin-top: 50px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
 }
 
 .welcome-title {
   font-size: 36px;
   font-weight: bold;
-  color: #2c3e50;
+  color: #2f353d;
   margin-bottom: 20px;
 }
 
@@ -133,32 +464,28 @@ button[type=submit]:hover {
 /* Estilos para los botones de navegación */
 .navigation-buttons {
   display: flex;
+  flex-direction: column;
   justify-content: space-between;
-  margin-top: 20px;
-  margin-bottom: 40px;
+  width: 25%;
+  padding: 40px 20px;
+  background: linear-gradient(135deg, #2f353d, #1f2a36);
 }
 
 .nav-button {
-  background-color: #3498db;
-  color: white;
+  background-color: #6d7b8d;
+  color: #fff;
   padding: 15px 30px;
   font-size: 16px;
   border: none;
   border-radius: 8px;
   cursor: pointer;
   transition: all 0.3s ease;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Sombra suave */
-  width: 22%; /* Hace que los botones estén más equilibrados */
   text-align: center;
 }
-
 .nav-button:hover {
-  background-color: #2980b9;
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2); /* Efecto hover con sombra más pronunciada */
-  transform: translateY(-2px); /* Efecto de "levantamiento" en hover */
+  background-color: #d3a971;
 }
 
-/* Diseño responsivo para los botones */
 @media (max-width: 768px) {
   .navigation-buttons {
     flex-direction: column;

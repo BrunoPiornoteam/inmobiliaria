@@ -1,0 +1,28 @@
+@use 'variables' as v;
+@use 'mixins' as m;
+
+.button--yellow {
+    @include m.button(v.$mainc, v.$white, block, v.$secondaryc);
+}
+.button--blue {
+    @include m.button(v.$secondaryc, v.$white, block, v.$mainc);
+}
+.button--white {
+    @include m.button(v.$white, v.$black, block, v.$secondaryc);
+}
+
+button[type="submit"] {
+    background-color: v.$mainc;
+    color: white;
+    padding: 15px 20px;
+    border: none;
+    border-radius: 5px;
+    width: 100%;
+    cursor: pointer;
+    font-size: 18px;
+    transition: all 0.3s ease;
+}
+
+button[type="submit"]:hover {
+    background-color: v.$secondaryc;
+}
