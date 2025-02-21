@@ -41,8 +41,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             <h3 class="system-description">Sistema Inmobiliario</h3>
         </div>
 
-        <h2>Iniciar sesión</h2>
-
         <!-- Mostrar error si las credenciales son incorrectas -->
         <?php if (isset($error)): ?>
             <div class="error"><?php echo $error; ?></div>
@@ -52,8 +50,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         <form method="POST">
             <input type="text" name="username" placeholder="Usuario" required>
             <input type="password" name="password" placeholder="Contraseña" required>
-            <button type="submit">Iniciar sesión</button>
+            <button type="submit">Iniciar Sesión</button>
         </form>
+    </div>
+    <div class="login-bg">
+        <img src="src/uploads/inmobiliaria-bg.jpg" alt="Inmobiliaria" class="bg-inm">
     </div>
 </body>
 </html>

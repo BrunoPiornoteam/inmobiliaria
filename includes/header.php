@@ -16,14 +16,13 @@ $user = $stmt->fetch(PDO::FETCH_ASSOC);
 <div class="navigation-buttons">
     <div class="admin-profile">
         <img src="/inmobiliaria/src/uploads/default-profile.jpeg" alt="Perfil" class="profile-image">
-        <p>Bienvenido, <?php echo isset($user) ? htmlspecialchars($user['nombre']) : 'Invitado'; ?>.</p>
-        <a href="logout.php">Cerrar sesión</a>
+        <p><?php echo isset($user) ? htmlspecialchars($user['nombre']) : 'Invitado'; ?></p>
     </div>
 
     <div class="nav-container">
         <a class="nav-button" href="/inmobiliaria/dashboard.php">Inicio</a>
-        <div class="nav-item">
-        <div class="nav-button">Propiedades</div>
+        <div class="nav-item active">
+            <div class="nav-button">Propiedades</div>
             <div class="submenu">
                 <a href="/inmobiliaria/propiedades/index.php">Ver propiedades</a> 
                 <a href="/inmobiliaria/propiedades/agregar.php">Agregar propiedad</a> 

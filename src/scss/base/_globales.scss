@@ -19,6 +19,12 @@ body {
     background: v.$background-main;
     min-height: 100dvh;
     display: flex;
+
+    @include m.tablet {
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
 }
 
 p {

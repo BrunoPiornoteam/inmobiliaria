@@ -1,4 +1,3 @@
-@charset "UTF-8";
 /*! modern-normalize v3.0.1 | MIT License | https://github.com/sindresorhus/modern-normalize */
 /*
 Document
@@ -196,6 +195,13 @@ body {
   min-height: 100dvh;
   display: flex;
 }
+@media (max-width: 768px) {
+  body {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+}
 
 p {
   font-size: 2rem;
@@ -225,12 +231,12 @@ h1 {
   font-weight: 400;
   line-height: 1.4;
 }
-@media (min-width: 768px) {
+@media (max-width: 768px) {
   h1 {
     font-size: 6rem;
   }
 }
-@media (min-width: 992px) {
+@media (max-width: 992px) {
   h1 {
     font-size: 9.5rem;
   }
@@ -240,7 +246,7 @@ h2 {
   font-size: 3.4rem;
   font-weight: 500;
 }
-@media (min-width: 992px) {
+@media (max-width: 992px) {
   h2 {
     font-size: 5.4rem;
   }
@@ -249,7 +255,7 @@ h2 {
 h3 {
   font-size: 2.4rem;
 }
-@media (min-width: 992px) {
+@media (max-width: 992px) {
   h3 {
     font-size: 3.2rem;
   }
@@ -260,7 +266,7 @@ h4 {
   text-transform: uppercase;
   font-weight: 500;
 }
-@media (min-width: 768px) {
+@media (max-width: 768px) {
   h4 {
     font-size: 2.5rem;
   }
@@ -280,7 +286,7 @@ body {
 section {
   margin-top: 5rem;
 }
-@media (min-width: 768px) {
+@media (max-width: 768px) {
   section {
     margin-top: 10rem;
   }
@@ -376,7 +382,7 @@ input[type=text],
 input[type=password] {
   width: 100%;
   padding: 12px 18px;
-  margin: 10px 0;
+  margin: 16px 0;
   border: 2px solid #ddd;
   border-radius: 5px;
   font-size: 16px;
@@ -387,6 +393,10 @@ input[type=text]:focus,
 input[type=password]:focus {
   border-color: #d3a971;
   outline: none;
+}
+
+input + input {
+  margin-top: 0 !important;
 }
 
 /* Estilo para mostrar el mensaje de error */
@@ -419,6 +429,48 @@ input[type=password]:focus {
 .login-container {
   animation: slideUp 0.5s ease-out;
 }
+.login-container .logo-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+}
+.login-container .logo-container .system-description {
+  margin-bottom: 2rem;
+}
+
+.login-bg {
+  position: relative;
+  width: 100%;
+}
+@media (max-width: 768px) {
+  .login-bg {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+  }
+}
+.login-bg img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -1;
+}
+.login-bg::after {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  content: "";
+  z-index: 1;
+  background: linear-gradient(135deg, #2f353d, #1f2a36);
+  opacity: 0.6;
+}
 
 .logo-inm {
   width: 100px;
@@ -427,6 +479,7 @@ input[type=password]:focus {
 @media (max-width: 600px) {
   .login-container {
     padding: 30px;
+    width: 90%;
   }
   h2 {
     font-size: 24px;
@@ -461,37 +514,78 @@ input[type=password]:focus {
   color: #7f8c8d;
 }
 
-/* Estilos para los botones de navegación */
 .navigation-buttons {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  gap: 4rem;
   width: 25%;
-  padding: 40px 20px;
+  padding: 4rem 0;
   background: linear-gradient(135deg, #2f353d, #1f2a36);
+}
+@media (max-width: 768px) {
+  .navigation-buttons {
+    flex-direction: column;
+  }
+}
+.navigation-buttons .admin-profile {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+}
+.navigation-buttons .admin-profile img {
+  width: 8rem;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  position: relative;
+  border: 0.2rem solid #d3a971;
+}
+.navigation-buttons .admin-profile p {
+  color: #fff;
+  text-transform: capitalize;
+}
+
+.nav-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.nav-item {
+  border-left: 0.2rem solid transparent;
+}
+.nav-item.active {
+  border-left: 0.3rem solid #d3a971;
+}
+.nav-item.active .submenu {
+  display: flex;
 }
 
 .nav-button {
-  background-color: #6d7b8d;
+  background-color: rgb(64.528, 72.816, 83.472);
   color: #fff;
-  padding: 15px 30px;
-  font-size: 16px;
+  padding: 1.2rem 2rem;
+  font-size: 1.6rem;
   border: none;
-  border-radius: 8px;
   cursor: pointer;
   transition: all 0.3s ease;
-  text-align: center;
+  text-align: left;
+}
+@media (max-width: 768px) {
+  .nav-button {
+    width: 100%;
+    margin: 1rem 0;
+  }
 }
 .nav-button:hover {
   background-color: #d3a971;
 }
 
-@media (max-width: 768px) {
-  .navigation-buttons {
-    flex-direction: column;
-  }
-  .nav-button {
-    width: 100%;
-    margin: 10px 0;
-  }
+.submenu {
+  flex-direction: column;
+  display: none;
+  padding: 1rem 3rem;
+}
+.submenu a {
+  padding: 1rem 0;
+  color: #fff;
 }

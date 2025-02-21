@@ -1,38 +1,84 @@
 @use 'base/variables' as v;
+@use 'base/mixins' as m;
+@use "sass:color";
 
-/* Estilos para los botones de navegación */
 .navigation-buttons {
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    gap: 4rem;
     width: 25%;
-    padding: 40px 20px;
-    background: v.$backgorund-bar;
+    padding: 4rem 0;
+    background: v.$background-bar;
+
+    @include m.tablet {
+        flex-direction: column;
+    }
+
+    .admin-profile {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: .5rem;
+
+        img {
+            width: 8rem;
+            aspect-ratio: 1;
+            border-radius: 50%;
+            position: relative;
+            border: .2rem solid v.$mainc;
+        }
+
+        p {
+            color: v.$white;
+            text-transform: capitalize;
+        }
+    }
+}
+
+.nav-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.nav-item {
+    border-left: .2rem solid transparent;
+
+    &.active {
+        border-left: .3rem solid v.$mainc;
+
+        .submenu {
+            display: flex;
+        }
+    }
 }
 
 .nav-button {
-    background-color: v.$grey; 
+    background-color: color.adjust(v.$grey, $lightness: -20%);
     color: v.$white;
-    padding: 15px 30px;
-    font-size: 16px;
+    padding: 1.2rem 2rem;
+    font-size: 1.6rem;
     border: none;
-    border-radius: 8px;
     cursor: pointer;
     transition: all 0.3s ease;
-    text-align: center;
+    text-align: left;
+    
+    @include m.tablet {
+        width: 100%;
+        margin: 1rem 0;
+    }
 
     &:hover {
         background-color: v.$mainc;
     }
 }
 
-@media (max-width: 768px) {
-    .navigation-buttons {
-        flex-direction: column;
-    }
+.submenu {
+    flex-direction: column;
+    display: none;
+    padding: 1rem 3rem;
 
-    .nav-button {
-        width: 100%;
-        margin: 10px 0;
+    a {
+        padding: 1rem 0;
+        color: v.$white;
     }
 }
