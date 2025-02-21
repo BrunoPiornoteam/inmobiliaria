@@ -1,0 +1,65 @@
+@use 'base/variables' as v;
+@use 'base/mixins' as m;
+
+.second-header {
+    display: flex;
+    align-items: center;
+    background: v.$background-bar;
+    color: #fff;
+    position: absolute; 
+    top: 0; 
+    right: 0; 
+    width: 100%;
+    z-index: 10;
+    padding: 0 2rem;
+
+    .menu-button {
+        background: none;
+        border: none;
+        color: #fff;
+        font-size: 2rem;
+        cursor: pointer;
+        margin-right: 1rem; 
+    }
+    
+    .search-container {
+        display: flex;
+        align-items: center;
+        margin-right: 1rem;
+        width: 100%;
+    }
+    
+    .search-container input {
+        padding: .5rem;
+        border: none;
+        border-radius: .5rem;
+        margin-right: .5rem;
+    }
+    
+    .search-container button {
+        background: none;
+        border: none;
+        color: #fff;
+        cursor: pointer;
+        width: auto;
+    }
+    
+    .logout-button {
+        color: #fff;
+        text-decoration: none;
+        font-size: 1.6rem;
+        display: flex;
+        gap: 1rem;
+        align-items: center;
+        background: v.$mainc;
+        transition: all 0.3s ease-in-out;
+        height: fit-content;
+        text-wrap: nowrap;
+        border-radius: .5rem;
+        padding: 1rem 2rem;
+
+        &:hover {
+            background: v.$secondaryc;
+        }
+    }
+}

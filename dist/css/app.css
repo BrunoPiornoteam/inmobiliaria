@@ -500,6 +500,7 @@ input + input {
   justify-content: center;
   align-items: center;
   width: 100%;
+  position: relative;
 }
 
 .welcome-title {
@@ -591,4 +592,61 @@ input + input {
 .submenu a {
   padding: 1rem 0;
   color: #fff;
+}
+
+.second-header {
+  display: flex;
+  align-items: center;
+  background: linear-gradient(135deg, #2f353d, #1f2a36);
+  color: #fff;
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 100%;
+  z-index: 10;
+  padding: 0 2rem;
+}
+.second-header .menu-button {
+  background: none;
+  border: none;
+  color: #fff;
+  font-size: 2rem;
+  cursor: pointer;
+  margin-right: 1rem;
+}
+.second-header .search-container {
+  display: flex;
+  align-items: center;
+  margin-right: 1rem;
+  width: 100%;
+}
+.second-header .search-container input {
+  padding: 0.5rem;
+  border: none;
+  border-radius: 0.5rem;
+  margin-right: 0.5rem;
+}
+.second-header .search-container button {
+  background: none;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+  width: auto;
+}
+.second-header .logout-button {
+  color: #fff;
+  text-decoration: none;
+  font-size: 1.6rem;
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  background: #d3a971;
+  transition: all 0.3s ease-in-out;
+  height: fit-content;
+  text-wrap: nowrap;
+  border-radius: 0.5rem;
+  padding: 1rem 2rem;
+}
+.second-header .logout-button:hover {
+  background: #3498db;
 }
