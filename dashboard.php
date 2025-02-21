@@ -27,6 +27,10 @@ if (!$user) {
 ?>
 
 <div class="dashboard-container">
+    <?php include('includes/second-header.php');?>
+    <div class="notification-banner">
+        <p><strong>¡Próximamente!</strong> Aquí estará todo lo que necesitas para gestionar tu inmobiliaria. Estamos en proceso de desarrollo.</p>
+    </div>
     <h1 class="welcome-title">Bienvenido al Panel de Administración</h1>
     <p class="welcome-description">Gestiona las propiedades, contratos, pagos y clientes de manera eficiente.</p>
     
