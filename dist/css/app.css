@@ -556,6 +556,9 @@ input + input {
 .nav-item.active {
   border-left: 0.3rem solid #d3a971;
 }
+.nav-item.active .nav-button {
+  background: linear-gradient(135deg, #2f353d, #1f2a36);
+}
 .nav-item.active .submenu {
   display: flex;
 }
@@ -583,7 +586,7 @@ input + input {
 .submenu {
   flex-direction: column;
   display: none;
-  padding: 1rem 3rem;
+  padding: 1rem 3.5rem;
 }
 .submenu a {
   padding: 1rem 0;

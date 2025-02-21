@@ -46,6 +46,10 @@
     &.active {
         border-left: .3rem solid v.$mainc;
 
+        .nav-button {
+            background: v.$background-bar;
+        }
+
         .submenu {
             display: flex;
         }
@@ -75,7 +79,7 @@
 .submenu {
     flex-direction: column;
     display: none;
-    padding: 1rem 3rem;
+    padding: 1rem 3.5rem;
 
     a {
         padding: 1rem 0;
