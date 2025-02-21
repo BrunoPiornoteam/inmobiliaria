@@ -1,3 +1,11 @@
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panel de Administración</title>
+    <!-- Enlaza el archivo CSS -->
+    <link rel="stylesheet" href="dist/css/app.css">
+</head>
 <?php
 session_start();
 include('includes/db.php');
@@ -24,6 +32,7 @@ if (!$user) {
     
     <p>Bienvenido, <?php echo htmlspecialchars(isset($user['username']) ? $user['username'] : 'Usuario'); ?>.</p>
 
+    <p><a href="logout.php" class="button--blue">Cerrar sesión</a></p>
 </div>
 
 <?php include('includes/footer.php'); ?>
