@@ -65,6 +65,8 @@
     cursor: pointer;
     transition: all 0.3s ease;
     text-align: left;
+    display: flex;
+    gap: 1rem;
     
     @include m.tablet {
         width: 100%;
@@ -79,7 +81,7 @@
 .submenu {
     flex-direction: column;
     display: none;
-    padding: 1rem 3.5rem;
+    padding: 1rem 4rem;
 
     a {
         padding: 1rem 0;
