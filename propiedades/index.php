@@ -8,7 +8,53 @@ if (!isset($_SESSION['user_id'])) {
     exit;
 }
 
-$stmt = $pdo->query("SELECT * FROM propiedades ORDER BY id DESC");
+// Lista de tipos de propiedades
+$tipos_propiedad = [
+    "casa" => "Casa",
+    "departamento" => "Departamento",
+    "duplex" => "Dúplex",
+    "ph" => "PH",
+    "local_comercial" => "Local Comercial",
+    "oficina" => "Oficina",
+    "galpon" => "Galpón",
+    "terreno" => "Terreno",
+    "hotel" => "Hotel",
+    "quinta" => "Quinta",
+    "edificio" => "Edificio en Block",
+    "cochera" => "Cochera",
+    "finca" => "Finca",
+    "campo" => "Campo"
+];
+
+// Variables para filtros y orden
+$where = "";
+$params = [];
+$orden = "ORDER BY id DESC"; // Orden por defecto
+
+// Filtrar por tipo de propiedad
+if (!empty($_GET['tipo']) && array_key_exists($_GET['tipo'], $tipos_propiedad)) {
+    $where .= " WHERE tipo = ?";
+    $params[] = $_GET['tipo'];
+}
+
+// Ordenar según selección del usuario
+if (!empty($_GET['orden'])) {
+    switch ($_GET['orden']) {
+        case 'id_asc':
+            $orden = "ORDER BY id ASC";
+            break;
+        case 'precio_asc':
+            $orden = "ORDER BY precio ASC";
+            break;
+        case 'precio_desc':
+            $orden = "ORDER BY precio DESC";
+            break;
+    }
+}
+
+// Construcción final de la consulta
+$stmt = $pdo->prepare("SELECT * FROM propiedades $where $orden");
+$stmt->execute($params);
 $propiedades = $stmt->fetchAll(PDO::FETCH_ASSOC);
 ?>
 
@@ -16,6 +62,28 @@ $propiedades = $stmt->fetchAll(PDO::FETCH_ASSOC);
     <h1 class="welcome-title">Listado de Propiedades</h1>
     <a href="agregar.php" class="button--blue">Agregar Nueva Propiedad</a>
     
+    <!-- Formulario de filtros -->
+    <form method="GET">
+        <label for="tipo">Filtrar por tipo:</label>
+        <select name="tipo">
+            <option value="" <?= empty($_GET['tipo']) ? 'selected' : '' ?>>Todos</option>
+            <?php foreach ($tipos_propiedad as $key => $label): ?>
+                <option value="<?= $key ?>" <?= ($_GET['tipo'] ?? '') == $key ? 'selected' : '' ?>><?= $label ?></option>
+            <?php endforeach; ?>
+        </select>
+
+        <label for="orden">Ordenar por:</label>
+        <select name="orden">
+            <option value="id_desc" <?= ($_GET['orden'] ?? '') == 'id_desc' ? 'selected' : '' ?>>Más recientes</option>
+            <option value="id_asc" <?= ($_GET['orden'] ?? '') == 'id_asc' ? 'selected' : '' ?>>Más antiguas</option>
+            <option value="precio_asc" <?= ($_GET['orden'] ?? '') == 'precio_asc' ? 'selected' : '' ?>>Menor precio</option>
+            <option value="precio_desc" <?= ($_GET['orden'] ?? '') == 'precio_desc' ? 'selected' : '' ?>>Mayor precio</option>
+        </select>
+
+        <button type="submit">Aplicar</button>
+    </form>
+
+    <!-- Tabla de propiedades -->
     <table class="dashboard-table">
         <thead>
             <tr>
@@ -42,8 +110,8 @@ $propiedades = $stmt->fetchAll(PDO::FETCH_ASSOC);
                         $imagenes = explode(',', $propiedad['imagenes']);
                         foreach ($imagenes as $imagen) {
                             echo "<a href='../src/uploads/$imagen' data-fancybox='gallery'>
-                            <img src='../src/uploads/$imagen' width='50' alt='Imagen de la propiedad'>
-                          </a>";
+                                    <img src='../src/uploads/$imagen' width='50' alt='Imagen de la propiedad'>
+                                  </a>";
                         }
                         ?>
                     </td>

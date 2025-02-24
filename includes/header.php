@@ -30,8 +30,8 @@ $user = $stmt->fetch(PDO::FETCH_ASSOC);
                 <i class="fas fa-building"></i> Propiedades
             </div>
             <div class="submenu">
-                <a href="/inmobiliaria/propiedades/index.php">Ver propiedades</a> 
                 <a href="/inmobiliaria/propiedades/agregar.php">Agregar propiedad</a> 
+                <a href="/inmobiliaria/propiedades/index.php">Ver propiedades</a> 
                 <a href="/inmobiliaria/propiedades/tipos.php">Tipos de propiedad</a> 
                 <a href="/inmobiliaria/propiedades/zonas.php">Zonas</a>
             </div>

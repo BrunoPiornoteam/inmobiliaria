@@ -18,12 +18,12 @@ if (!$user) {
 }
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    $titulo = $_POST['titulo'];
-    $descripcion = $_POST['descripcion'];
-    $precio = $_POST['precio'];
-    $tipo = $_POST['tipo'];
-    $ubicacion = $_POST['ubicacion'];
-    $tamano = $_POST['tamano'];
+    $titulo = htmlspecialchars($_POST['titulo']);
+    $descripcion = htmlspecialchars($_POST['descripcion']);
+    $precio = filter_var($_POST['precio'], FILTER_SANITIZE_NUMBER_FLOAT, FILTER_FLAG_ALLOW_FRACTION);
+    $tipo = htmlspecialchars($_POST['tipo']);
+    $ubicacion = htmlspecialchars($_POST['ubicacion']);
+    $tamano = filter_var($_POST['tamano'], FILTER_SANITIZE_NUMBER_FLOAT, FILTER_FLAG_ALLOW_FRACTION);
 
     $uploadDir = '../src/uploads/';
 
@@ -47,26 +47,33 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     $imagenes = implode(',', $imagenesGuardadas);
 
-    $stmt = $pdo->prepare("INSERT INTO propiedades (titulo, descripcion, precio, tipo, ubicacion, tamano, imagenes) VALUES (?, ?, ?, ?, ?, ?, ?)");
-    $stmt->execute([$titulo, $descripcion, $precio, $tipo, $ubicacion, $tamano, $imagenes]);
-
-    echo "Propiedad agregada con éxito.";
+    try {
+        $stmt = $pdo->prepare("INSERT INTO propiedades (titulo, descripcion, precio, tipo, ubicacion, tamano, imagenes) VALUES (?, ?, ?, ?, ?, ?, ?)");
+        $stmt->execute([$titulo, $descripcion, $precio, $tipo, $ubicacion, $tamano, $imagenes]);
+        echo "Propiedad agregada con éxito.";
+    } catch (PDOException $e) {
+        echo "Error al agregar propiedad: " . $e->getMessage();
+    }
 }
+
+// Obtener tipos de propiedades desde la base de datos
+$stmt = $pdo->query("SELECT tipo FROM tipos_propiedades");
+$tiposPropiedades = $stmt->fetchAll(PDO::FETCH_COLUMN);
 ?>
 
 <h1>Agregar Nueva Propiedad</h1>
 <form method="POST" enctype="multipart/form-data">
     <input type="text" name="titulo" placeholder="Título" required>
     <textarea name="descripcion" placeholder="Descripción" required></textarea>
-    <input type="number" name="precio" placeholder="Precio" required>
+    <input type="number" name="precio" placeholder="Precio" required step="1000">
     <select name="tipo" required>
-        <option value="residencial">Residencial</option>
-        <option value="comercial">Comercial</option>
-        <option value="terreno">Terreno</option>
+        <?php foreach ($tiposPropiedades as $tipo): ?>
+            <option value="<?php echo htmlspecialchars($tipo); ?>"><?php echo htmlspecialchars($tipo); ?></option>
+        <?php endforeach; ?>
     </select>
     <input type="text" name="ubicacion" placeholder="Ubicación" required>
-    <input type="number" name="tamano" placeholder="Tamaño (m2)" required>
-    <input type="file" name="imagenes[]" multiple required>
+    <input type="number" name="tamano" placeholder="Tamaño (m²)" required step="1">
+    <input type="file" name="imagenes[]" multiple>
     <button type="submit">Agregar Propiedad</button>
 </form>
 
