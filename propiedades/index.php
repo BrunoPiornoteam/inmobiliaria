@@ -41,7 +41,9 @@ $propiedades = $stmt->fetchAll(PDO::FETCH_ASSOC);
                         <?php 
                         $imagenes = explode(',', $propiedad['imagenes']);
                         foreach ($imagenes as $imagen) {
-                            echo "<img src='../uploads/$imagen' width='50' alt=''>";
+                            echo "<a href='../src/uploads/$imagen' data-fancybox='gallery'>
+                            <img src='../src/uploads/$imagen' width='50' alt='Imagen de la propiedad'>
+                          </a>";
                         }
                         ?>
                     </td>

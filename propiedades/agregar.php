@@ -3,7 +3,6 @@ session_start();
 include('../includes/db.php');
 include('../includes/header.php');
 
-
 if (!isset($_SESSION['user_id'])) {
     header('Location: login.php'); 
     exit;
@@ -25,15 +24,31 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $tipo = $_POST['tipo'];
     $ubicacion = $_POST['ubicacion'];
     $tamano = $_POST['tamano'];
-    $imagenes = implode(',', $_FILES['imagenes']['name']);
 
-    $stmt = $pdo->prepare("INSERT INTO propiedades (titulo, descripcion, precio, tipo, ubicacion, tamano, imagenes) VALUES (?, ?, ?, ?, ?, ?, ?)");
-    $stmt->execute([$titulo, $descripcion, $precio, $tipo, $ubicacion, $tamano, $imagenes]);
+    $uploadDir = '../src/uploads/';
+
+    if (!is_dir($uploadDir)) {
+        mkdir($uploadDir, 0777, true);
+    }
+
+    $imagenesGuardadas = [];
 
     foreach ($_FILES['imagenes']['tmp_name'] as $key => $tmp_name) {
         $file_name = $_FILES['imagenes']['name'][$key];
-        move_uploaded_file($tmp_name, "uploads/$file_name");
+
+        $file_name = preg_replace('/[^A-Za-z0-9_\-\.]/', '_', $file_name);
+        
+        $filePath = $uploadDir . $file_name;
+
+        if (move_uploaded_file($tmp_name, $filePath)) {
+            $imagenesGuardadas[] = $file_name;
+        }
     }
+
+    $imagenes = implode(',', $imagenesGuardadas);
+
+    $stmt = $pdo->prepare("INSERT INTO propiedades (titulo, descripcion, precio, tipo, ubicacion, tamano, imagenes) VALUES (?, ?, ?, ?, ?, ?, ?)");
+    $stmt->execute([$titulo, $descripcion, $precio, $tipo, $ubicacion, $tamano, $imagenes]);
 
     echo "Propiedad agregada con éxito.";
 }
@@ -51,7 +66,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     </select>
     <input type="text" name="ubicacion" placeholder="Ubicación" required>
     <input type="number" name="tamano" placeholder="Tamaño (m2)" required>
-    <input type="file" name="imagenes[]" multiple>
+    <input type="file" name="imagenes[]" multiple required>
     <button type="submit">Agregar Propiedad</button>
 </form>
 

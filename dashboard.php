@@ -1,11 +1,3 @@
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Panel de Administración</title>
-    <!-- Enlaza el archivo CSS -->
-    <link rel="stylesheet" href="dist/css/app.css">
-</head>
 <?php
 session_start();
 include('includes/db.php');
@@ -25,6 +17,15 @@ if (!$user) {
     exit;
 }
 ?>
+
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panel de Administración</title>
+    <!-- Enlaza el archivo CSS -->
+    <link rel="stylesheet" href="dist/css/app.css">
+</head>
 
 <div class="dashboard-container">
     <?php include('includes/second-header.php');?>
