@@ -1,3 +1,4 @@
+<?php session_start(); ?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -6,7 +7,8 @@
     <title>Panel de Administración</title>
     <link rel="stylesheet" href="../dist/css/app.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-   
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 <body>
 <?php 
@@ -42,8 +44,8 @@ $user = $stmt->fetch(PDO::FETCH_ASSOC);
                 <i class="fas fa-users"></i> Clientes
             </div>
             <div class="submenu">
-                <a href="clientes.php">Lista de clientes</a>
-                <a href="agregar_cliente.php">Agregar cliente</a>
+                <a href="/inmobiliaria/clientes/clientes.php">Lista de clientes</a>
+                <a href="/inmobiliaria/clientes/editar_cliente.php">Agregar cliente</a>
             </div>
         </div>
 
