@@ -25,10 +25,9 @@ $tipos_propiedad = [
     "campo" => "Campo"
 ];
 
-// Variables para filtros y orden
 $where = "";
 $params = [];
-$orden = "ORDER BY id DESC"; // Orden por defecto
+$orden = "ORDER BY id DESC"; 
 
 // Filtrar por tipo de propiedad
 if (!empty($_GET['tipo']) && array_key_exists($_GET['tipo'], $tipos_propiedad)) {

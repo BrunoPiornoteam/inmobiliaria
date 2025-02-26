@@ -1,0 +1,115 @@
+<?php
+include('../includes/db.php');
+include('../includes/header.php');
+
+if (!isset($_SESSION['user_id'])) {
+    header('Location: login.php'); 
+    exit;
+}
+
+$stmt = $pdo->query("SELECT id, titulo FROM propiedades");
+$propiedades = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+$stmt = $pdo->query("SELECT id, nombre FROM clientes ORDER BY id DESC");
+$clientes = $stmt->fetchAll(PDO::FETCH_ASSOC) ?: []; 
+
+if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['action']) && $_POST['action'] == 'add') {
+    $propiedad_id = $_POST['propiedad_id'];
+    $cliente_id = $_POST['cliente_id'];
+    $tipo_contrato = $_POST['tipo_contrato'];
+    $precio = $_POST['precio'];
+    $fecha_inicio = $_POST['fecha_inicio'];
+    $fecha_fin = $_POST['fecha_fin'];
+
+    $archivo_nombre = null;
+    if (!empty($_FILES['archivo']['name'])) {
+        $directorio = 'uploads/contratos/';
+        if (!file_exists($directorio)) {
+            mkdir($directorio, 0777, true);
+        }
+        $archivo_nombre = time() . "_" . basename($_FILES['archivo']['name']);
+        $archivo_ruta = $directorio . $archivo_nombre;
+
+        if (!move_uploaded_file($_FILES['archivo']['tmp_name'], $archivo_ruta)) {
+            echo "<script>Swal.fire('Error', 'Error al subir el archivo.', 'error');</script>";
+            $archivo_nombre = null;
+        }
+    }
+
+    $stmt = $pdo->prepare("INSERT INTO contratos (propiedad_id, cliente_id, tipo_contrato, precio, fecha_inicio, fecha_fin, archivo) VALUES (?, ?, ?, ?, ?, ?, ?)");
+    if ($stmt->execute([$propiedad_id, $cliente_id, $tipo_contrato, $precio, $fecha_inicio, $fecha_fin, $archivo_nombre])) {
+        echo "<script>Swal.fire('Éxito', 'Contrato agregado con éxito.', 'success');</script>";
+    } else {
+        echo "<script>Swal.fire('Error', 'Hubo un problema al agregar el contrato.', 'error');</script>";
+    }
+}
+?>
+
+<h1>Agregar Contrato</h1>
+<form method="POST" enctype="multipart/form-data">
+    <select name="cliente_id" id="cliente_id" required>
+        <option value="">Selecciona un cliente</option>
+        <?php foreach ($clientes as $cliente): ?>
+            <option value="<?php echo htmlspecialchars($cliente['id']); ?>">
+                <?php echo htmlspecialchars($cliente['nombre']); ?>
+            </option>
+        <?php endforeach; ?>
+    </select>
+
+    <select name="propiedad_id" id="propiedad_id" required>
+        <option value="">Selecciona una propiedad</option>
+        <!-- Aquí se llenarán las propiedades usando AJAX -->
+    </select>
+
+    <select name="tipo_contrato" required>
+        <option value="venta">Venta</option>
+        <option value="alquiler">Alquiler</option>
+    </select>
+
+    <input type="number" name="precio" placeholder="Precio" required>
+    <input type="date" name="fecha_inicio" required>
+    <input type="date" name="fecha_fin" required>
+    
+    <label>Adjuntar contrato (PDF, imagen):</label>
+    <input type="file" name="archivo" accept=".pdf,.jpg,.png,.jpeg">
+
+    <button type="submit" name="action" value="add">Agregar Contrato</button>
+</form>
+
+<a href="ver_contratos.php">Ver Contratos</a>
+<script>
+document.getElementById('cliente_id').addEventListener('change', function() {
+    var clienteId = this.value;
+
+    // Limpiar el select de propiedades
+    var propiedadesSelect = document.getElementById('propiedad_id');
+    propiedadesSelect.innerHTML = '<option value="">Selecciona una propiedad</option>';
+
+    if (clienteId) {
+        var xhr = new XMLHttpRequest();
+        xhr.open('POST', '../propiedades/get_propiedades.php', true);
+        xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+        xhr.onload = function() {
+            if (xhr.status === 200) {
+                var propiedades = JSON.parse(xhr.responseText);
+                console.log(propiedades);
+                propiedades.forEach(function(propiedad) {
+                    var option = document.createElement('option');
+                    option.value = propiedad.id;
+                    option.textContent = propiedad.titulo;
+                    propiedadesSelect.appendChild(option);
+                });
+            } else {
+                console.error('Error en la solicitud:', xhr.statusText); // Manejo de errores
+            }
+        };
+        xhr.onerror = function() {
+            console.error('Error en la conexión.');
+        };
+        xhr.send('cliente_id=' + clienteId);
+    }
+});
+</script>
+
+
+<?php include('../includes/footer.php'); ?>

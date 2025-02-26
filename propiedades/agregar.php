@@ -23,6 +23,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $tipo = htmlspecialchars($_POST['tipo']);
     $ubicacion = htmlspecialchars($_POST['ubicacion']);
     $tamano = filter_var($_POST['tamano'], FILTER_SANITIZE_NUMBER_FLOAT, FILTER_FLAG_ALLOW_FRACTION);
+    $cliente_id = filter_var($_POST['cliente_id']);
 
     $uploadDir = '../src/uploads/';
 
@@ -47,8 +48,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $imagenes = implode(',', $imagenesGuardadas);
 
     try {
-        $stmt = $pdo->prepare("INSERT INTO propiedades (titulo, descripcion, precio, tipo, ubicacion, tamano, imagenes) VALUES (?, ?, ?, ?, ?, ?, ?)");
-        $stmt->execute([$titulo, $descripcion, $precio, $tipo, $ubicacion, $tamano, $imagenes]);
+        $stmt = $pdo->prepare("INSERT INTO propiedades (titulo, descripcion, precio, tipo, ubicacion, tamano, imagenes, cliente_id) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
+        $stmt->execute([$titulo, $descripcion, $precio, $tipo, $ubicacion, $tamano, $imagenes, $cliente_id]);
         echo "Propiedad agregada con éxito.";
     } catch (PDOException $e) {
         echo "Error al agregar propiedad: " . $e->getMessage();
@@ -72,6 +73,7 @@ $tiposPropiedades = $stmt->fetchAll(PDO::FETCH_COLUMN);
     </select>
     <input type="text" name="ubicacion" placeholder="Ubicación" required>
     <input type="number" name="tamano" placeholder="Tamaño (m²)" required step="1">
+    
     <input type="file" name="imagenes[]" multiple>
     <button type="submit">Agregar Propiedad</button>
 </form>
