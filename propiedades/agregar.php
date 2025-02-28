@@ -75,27 +75,32 @@ $stmt = $pdo->query("SELECT tipo FROM tipos_propiedades");
 $tiposPropiedades = $stmt->fetchAll(PDO::FETCH_COLUMN);
 ?>
 
-<h1>Agregar Nueva Propiedad</h1>
-<form method="POST" enctype="multipart/form-data">
-    <input type="text" name="titulo" placeholder="Título" required>
-    <textarea name="descripcion" placeholder="Descripción" required></textarea>
-    <input type="number" name="precio" placeholder="Precio" required step="1000">
-    <select name="tipo" required>
-        <?php foreach ($tiposPropiedades as $tipo): ?>
-            <option value="<?php echo htmlspecialchars($tipo); ?>"><?php echo htmlspecialchars($tipo); ?></option>
-        <?php endforeach; ?>
-    </select>
-    <label>
-        <input type="radio" name="tipo_operacion" value="Venta" required> Venta
-    </label>
-    <label>
-        <input type="radio" name="tipo_operacion" value="Alquiler" required> Alquiler
-    </label>
-    <input type="text" name="ubicacion" placeholder="Ubicación" required>
-    <input type="number" name="tamano" placeholder="Tamaño (m²)" required step="1">
-    
-    <input type="file" name="imagenes[]" multiple>
-    <button type="submit">Agregar Propiedad</button>
-</form>
+<div class="dashboard-container">
+    <?php include('../includes/second-header.php');?>
+    <h1>Agregar Nueva Propiedad</h1>
+    <form method="POST" enctype="multipart/form-data" class="agregar">
+        <input type="text" name="titulo" placeholder="Título" required>
+        <textarea name="descripcion" placeholder="Descripción" required></textarea>
+        <input type="number" name="precio" placeholder="Precio" required step="1000">
+        <select name="tipo" required>
+            <?php foreach ($tiposPropiedades as $tipo): ?>
+                <option value="<?php echo htmlspecialchars($tipo); ?>"><?php echo htmlspecialchars($tipo); ?></option>
+            <?php endforeach; ?>
+        </select>
+        <fieldset name="tipo_operacion">
+            <label>
+                <input type="radio" name="tipo_operacion" value="Venta" required> Venta
+            </label>
+            <label>
+                <input type="radio" name="tipo_operacion" value="Alquiler" required> Alquiler
+            </label>
+        </fieldset>
+        <input type="text" name="ubicacion" placeholder="Ubicación" required>
+        <input type="number" name="tamano" placeholder="Tamaño (m²)" required step="1">
+        
+        <input type="file" name="imagenes[]" multiple>
+        <button type="submit">Agregar Propiedad</button>
+    </form>
+</div>
 
 <?php include('../includes/footer.php'); ?>

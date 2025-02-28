@@ -2,20 +2,22 @@
 
 /* Inputs */
 input[type="text"],
-input[type="password"] {
+input[type="password"],
+input[type="number"],
+textarea,
+select {
     width: 100%;
-    padding: 12px 18px;
-    margin: 16px 0;
-    border: 2px solid #ddd;
-    border-radius: 5px;
-    font-size: 16px;
+    padding: 1.2rem 1.8rem;
+    margin: 1.6rem 0;
+    border: .2rem solid #ddd;
+    border-radius: .5rem;
+    font-size: 1.6rem;
     transition: border 0.3s ease;
-}
 
-input[type="text"]:focus,
-input[type="password"]:focus {
-    border-color: v.$mainc;
-    outline: none;
+    &:focus {
+        outline: none;
+        border-color: v.$mainc;
+    }
 }
 
 input + input {
@@ -25,5 +27,59 @@ input + input {
 .error {
     color: red;
     margin-top: 15px;
-    font-size: 16px;
+    font-size: 1.6rem;
+}
+
+.agregar {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    column-gap: 1rem;
+    width: 70%;
+
+    & > * {
+        grid-column: span 5;
+    }
+
+    textarea {
+        grid-column: span 3;
+        resize: none;
+    }
+
+    input[name="precio"] {
+        grid-column: span 2;
+    }
+
+    select {
+        grid-column: span 3;
+    }
+
+    fieldset {
+        grid-column: span 2;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 20px;
+        align-items: center;
+        justify-content: center;
+        border: none;
+
+        label {
+            cursor: pointer;
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+        }
+    }
+
+    input[name="ubicacion"] {
+        grid-column: span 3;
+    }
+
+    input[name="tamano"] {
+        grid-column: span 2;
+    }
+
+    input[name="imagenes[]"] {
+        margin-bottom: 2rem;
+        cursor: pointer;
+    }
 }
