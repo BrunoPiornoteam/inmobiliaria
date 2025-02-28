@@ -20,7 +20,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $titulo = htmlspecialchars($_POST['titulo']);
     $descripcion = htmlspecialchars($_POST['descripcion']);
     $precio = filter_var($_POST['precio'], FILTER_SANITIZE_NUMBER_FLOAT, FILTER_FLAG_ALLOW_FRACTION);
-    $tipo = htmlspecialchars($_POST['tipo']);  // Tipo de propiedad seleccionado
+    $tipo = htmlspecialchars($_POST['tipo']);
     $ubicacion = htmlspecialchars($_POST['ubicacion']);
     $tamano = filter_var($_POST['tamano'], FILTER_SANITIZE_NUMBER_FLOAT, FILTER_FLAG_ALLOW_FRACTION);
 
@@ -39,7 +39,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $imagenesGuardadas = [];
     foreach ($_FILES['imagenes']['tmp_name'] as $key => $tmp_name) {
         $file_name = $_FILES['imagenes']['name'][$key];
-        $file_name = preg_replace('/[^A-Za-z0-9_\-\.]/', '_', $file_name);  // Limpiar el nombre de archivo
+        $file_name = preg_replace('/[^A-Za-z0-9_\-\.]/', '_', $file_name);  
         $filePath = $uploadDir . $file_name;
 
         if (move_uploaded_file($tmp_name, $filePath)) {
@@ -49,18 +49,28 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     $imagenes = implode(',', $imagenesGuardadas);  // Convertir las imágenes a un string separado por comas
 
-    // Insertar los datos en la base de datos
     try {
         $stmt = $pdo->prepare("INSERT INTO propiedades (titulo, descripcion, precio, tipo, ubicacion, tamano, tipo_operacion, imagenes) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
         $stmt->execute([$titulo, $descripcion, $precio, $tipo, $ubicacion, $tamano, $tipo_operacion, $imagenes]);
 
-        echo "Propiedad agregada con éxito.";
+        echo "<script>
+            Swal.fire({
+                title: 'Éxito!',
+                text: 'Propiedad agregada con éxito.',
+                icon: 'success',
+                confirmButtonText: 'Aceptar'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    // Redirigir a la página index.php después de la confirmación
+                    window.location.href = 'index.php'; 
+                }
+            });
+          </script>";
     } catch (PDOException $e) {
         echo "Error al agregar propiedad: " . $e->getMessage();
     }
 }
 
-// Obtener todos los tipos de propiedades desde la base de datos
 $stmt = $pdo->query("SELECT tipo FROM tipos_propiedades");
 $tiposPropiedades = $stmt->fetchAll(PDO::FETCH_COLUMN);
 ?>

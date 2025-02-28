@@ -38,7 +38,7 @@ if (!empty($_GET['tipo']) && array_key_exists($_GET['tipo'], $tipos_propiedad)) 
 // Filtrar por estado (Venta o Alquiler)
 if (!empty($_GET['tipo_operacion']) && in_array($_GET['tipo_operacion'], ['Venta', 'Alquiler'])) {
     $where[] = "tipo_operacion = ?";
-    $params[] = "%{$_GET['tipo_operacion']}%";
+    $params[] = $_GET['tipo_operacion'];
 }
 
 // Concatenar la cláusula WHERE
@@ -93,48 +93,51 @@ $propiedades = $stmt->fetchAll(PDO::FETCH_ASSOC);
             <option value="precio_asc" <?= ($_GET['orden'] ?? '') == 'precio_asc' ? 'selected' : '' ?>>Menor precio</option>
             <option value="precio_desc" <?= ($_GET['orden'] ?? '') == 'precio_desc' ? 'selected' : '' ?>>Mayor precio</option>
         </select>
+        <?php if (!empty($_GET['tipo']) || !empty($_GET['tipo_operacion']) || !empty($_GET['orden'])): ?>
+            <button type="button" onclick="window.location.href='index.php'">Limpiar filtros</button>
+        <?php endif; ?>
 
         <button type="submit">Aplicar</button>
     </form>
 
-    <!-- Tabla de propiedades -->
+    <?php if (empty($propiedades)): ?>
+        <script>
+            Swal.fire({
+                title: 'Sin resultados',
+                text: 'No hay propiedades disponibles con los filtros seleccionados.',
+                icon: 'warning',
+                confirmButtonText: 'Aceptar'
+            });
+        </script>
+    <?php else: ?>
     <table class="dashboard-table">
         <thead>
             <tr>
                 <th>Título</th>
-                <th>Descripción</th>
                 <th>Precio</th>
                 <th>Tipo</th>
                 <th>Ubicación</th>
-                <th>Tamaño</th>
+                <th>Tipo de operación</th>
                 <th>Estado</th>
-                <th>Imágenes</th>
             </tr>
         </thead>
         <tbody>
             <?php foreach ($propiedades as $propiedad): ?>
                 <tr>
                     <td><?php echo htmlspecialchars($propiedad['titulo']); ?></td>
-                    <td><?php echo htmlspecialchars($propiedad['descripcion']); ?></td>
                     <td><?php echo number_format($propiedad['precio'], 2, ',', '.'); ?> USD</td>
                     <td><?php echo htmlspecialchars($propiedad['tipo']); ?></td>
                     <td><?php echo htmlspecialchars($propiedad['ubicacion']); ?></td>
-                    <td><?php echo htmlspecialchars($propiedad['tamano']); ?> m²</td>
                     <td><?php echo htmlspecialchars($propiedad['tipo_operacion']); ?></td>
+                    <td><?php echo htmlspecialchars($propiedad['estado']); ?></td>
                     <td>
-                        <?php 
-                        $imagenes = explode(',', $propiedad['imagenes']);
-                        foreach ($imagenes as $imagen) {
-                            echo "<a href='../src/uploads/$imagen' data-fancybox='gallery'>
-                                    <img src='../src/uploads/$imagen' width='50' alt='Imagen de la propiedad'>
-                                  </a>";
-                        }
-                        ?>
+                        <a href="single_propiedad.php?id=<?= $propiedad['id'] ?>" class="button--blue">Ver más</a>
                     </td>
                 </tr>
             <?php endforeach; ?>
         </tbody>
     </table>
+    <?php endif; ?>
 </div>
 
 <?php include('../includes/footer.php'); ?>
