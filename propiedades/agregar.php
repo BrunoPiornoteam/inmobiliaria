@@ -20,24 +20,26 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $titulo = htmlspecialchars($_POST['titulo']);
     $descripcion = htmlspecialchars($_POST['descripcion']);
     $precio = filter_var($_POST['precio'], FILTER_SANITIZE_NUMBER_FLOAT, FILTER_FLAG_ALLOW_FRACTION);
-    $tipo = htmlspecialchars($_POST['tipo']);
+    $tipo = htmlspecialchars($_POST['tipo']);  // Tipo de propiedad seleccionado
     $ubicacion = htmlspecialchars($_POST['ubicacion']);
     $tamano = filter_var($_POST['tamano'], FILTER_SANITIZE_NUMBER_FLOAT, FILTER_FLAG_ALLOW_FRACTION);
-    $cliente_id = filter_var($_POST['cliente_id']);
 
+    if (!isset($_POST['tipo_operacion']) || !in_array($_POST['tipo_operacion'], ['Venta', 'Alquiler'])) {
+        echo "<script>alert('Debe seleccionar si la propiedad es de Venta o Alquiler.');</script>";
+        exit;
+    }
+    $tipo_operacion = $_POST['tipo_operacion']; 
+
+    // Subir las imágenes
     $uploadDir = '../src/uploads/';
-
     if (!is_dir($uploadDir)) {
         mkdir($uploadDir, 0777, true);
     }
 
     $imagenesGuardadas = [];
-
     foreach ($_FILES['imagenes']['tmp_name'] as $key => $tmp_name) {
         $file_name = $_FILES['imagenes']['name'][$key];
-
-        $file_name = preg_replace('/[^A-Za-z0-9_\-\.]/', '_', $file_name);
-        
+        $file_name = preg_replace('/[^A-Za-z0-9_\-\.]/', '_', $file_name);  // Limpiar el nombre de archivo
         $filePath = $uploadDir . $file_name;
 
         if (move_uploaded_file($tmp_name, $filePath)) {
@@ -45,18 +47,20 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         }
     }
 
-    $imagenes = implode(',', $imagenesGuardadas);
+    $imagenes = implode(',', $imagenesGuardadas);  // Convertir las imágenes a un string separado por comas
 
+    // Insertar los datos en la base de datos
     try {
-        $stmt = $pdo->prepare("INSERT INTO propiedades (titulo, descripcion, precio, tipo, ubicacion, tamano, imagenes, cliente_id) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
-        $stmt->execute([$titulo, $descripcion, $precio, $tipo, $ubicacion, $tamano, $imagenes, $cliente_id]);
+        $stmt = $pdo->prepare("INSERT INTO propiedades (titulo, descripcion, precio, tipo, ubicacion, tamano, tipo_operacion, imagenes) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
+        $stmt->execute([$titulo, $descripcion, $precio, $tipo, $ubicacion, $tamano, $tipo_operacion, $imagenes]);
+
         echo "Propiedad agregada con éxito.";
     } catch (PDOException $e) {
         echo "Error al agregar propiedad: " . $e->getMessage();
     }
 }
 
-// Obtener tipos de propiedades desde la base de datos
+// Obtener todos los tipos de propiedades desde la base de datos
 $stmt = $pdo->query("SELECT tipo FROM tipos_propiedades");
 $tiposPropiedades = $stmt->fetchAll(PDO::FETCH_COLUMN);
 ?>
@@ -71,6 +75,12 @@ $tiposPropiedades = $stmt->fetchAll(PDO::FETCH_COLUMN);
             <option value="<?php echo htmlspecialchars($tipo); ?>"><?php echo htmlspecialchars($tipo); ?></option>
         <?php endforeach; ?>
     </select>
+    <label>
+        <input type="radio" name="tipo_operacion" value="Venta" required> Venta
+    </label>
+    <label>
+        <input type="radio" name="tipo_operacion" value="Alquiler" required> Alquiler
+    </label>
     <input type="text" name="ubicacion" placeholder="Ubicación" required>
     <input type="number" name="tamano" placeholder="Tamaño (m²)" required step="1">
     

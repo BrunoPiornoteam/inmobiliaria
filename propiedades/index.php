@@ -25,15 +25,24 @@ $tipos_propiedad = [
     "campo" => "Campo"
 ];
 
-$where = "";
+$where = [];
 $params = [];
 $orden = "ORDER BY id DESC"; 
 
 // Filtrar por tipo de propiedad
 if (!empty($_GET['tipo']) && array_key_exists($_GET['tipo'], $tipos_propiedad)) {
-    $where .= " WHERE tipo = ?";
+    $where[] = "tipo = ?";  // Agregar condición al array
     $params[] = $_GET['tipo'];
 }
+
+// Filtrar por estado (Venta o Alquiler)
+if (!empty($_GET['tipo_operacion']) && in_array($_GET['tipo_operacion'], ['Venta', 'Alquiler'])) {
+    $where[] = "tipo_operacion = ?";
+    $params[] = "%{$_GET['tipo_operacion']}%";
+}
+
+// Concatenar la cláusula WHERE
+$where_sql = !empty($where) ? "WHERE " . implode(" AND ", $where) : "";
 
 // Ordenar según selección del usuario
 if (!empty($_GET['orden'])) {
@@ -51,7 +60,7 @@ if (!empty($_GET['orden'])) {
 }
 
 // Construcción final de la consulta
-$stmt = $pdo->prepare("SELECT * FROM propiedades $where $orden");
+$stmt = $pdo->prepare("SELECT * FROM propiedades $where_sql $orden");
 $stmt->execute($params);
 $propiedades = $stmt->fetchAll(PDO::FETCH_ASSOC);
 ?>
@@ -68,6 +77,13 @@ $propiedades = $stmt->fetchAll(PDO::FETCH_ASSOC);
             <?php foreach ($tipos_propiedad as $key => $label): ?>
                 <option value="<?= $key ?>" <?= ($_GET['tipo'] ?? '') == $key ? 'selected' : '' ?>><?= $label ?></option>
             <?php endforeach; ?>
+        </select>
+
+        <label for="tipo_operacion">Estado:</label>
+        <select name="tipo_operacion">
+            <option value="" <?= empty($_GET['tipo_operacion']) ? 'selected' : '' ?>>Todos</option>
+            <option value="Venta" <?= ($_GET['tipo_operacion'] ?? '') == 'Venta' ? 'selected' : '' ?>>Venta</option>
+            <option value="Alquiler" <?= ($_GET['tipo_operacion'] ?? '') == 'Alquiler' ? 'selected' : '' ?>>Alquiler</option>
         </select>
 
         <label for="orden">Ordenar por:</label>
@@ -91,6 +107,7 @@ $propiedades = $stmt->fetchAll(PDO::FETCH_ASSOC);
                 <th>Tipo</th>
                 <th>Ubicación</th>
                 <th>Tamaño</th>
+                <th>Estado</th>
                 <th>Imágenes</th>
             </tr>
         </thead>
@@ -103,6 +120,7 @@ $propiedades = $stmt->fetchAll(PDO::FETCH_ASSOC);
                     <td><?php echo htmlspecialchars($propiedad['tipo']); ?></td>
                     <td><?php echo htmlspecialchars($propiedad['ubicacion']); ?></td>
                     <td><?php echo htmlspecialchars($propiedad['tamano']); ?> m²</td>
+                    <td><?php echo htmlspecialchars($propiedad['tipo_operacion']); ?></td>
                     <td>
                         <?php 
                         $imagenes = explode(',', $propiedad['imagenes']);
