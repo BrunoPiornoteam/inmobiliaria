@@ -430,8 +430,17 @@ input + input {
   column-gap: 1rem;
   width: 70%;
 }
-.agregar > * {
-  grid-column: span 5;
+.agregar input[name=titulo] {
+  grid-column: span 4;
+}
+.agregar input[name="imagenes[]"] {
+  margin-bottom: 2rem;
+  cursor: pointer;
+  border: 0.2rem solid #d3a971;
+  border-radius: 0.5rem;
+  display: flex;
+  margin-top: 1.6rem !important;
+  padding: 1.2rem 1.8rem;
 }
 .agregar textarea {
   grid-column: span 3;
@@ -464,9 +473,8 @@ input + input {
 .agregar input[name=tamano] {
   grid-column: span 2;
 }
-.agregar input[name="imagenes[]"] {
-  margin-bottom: 2rem;
-  cursor: pointer;
+.agregar button {
+  grid-column: span 5;
 }
 
 .login-container {

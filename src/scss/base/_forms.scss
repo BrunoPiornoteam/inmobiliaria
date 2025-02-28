@@ -36,8 +36,18 @@ input + input {
     column-gap: 1rem;
     width: 70%;
 
-    & > * {
-        grid-column: span 5;
+    input[name="titulo"] {
+        grid-column: span 4;
+    }
+
+    input[name="imagenes[]"] {
+        margin-bottom: 2rem;
+        cursor: pointer;
+        border: .2rem solid v.$mainc;
+        border-radius: .5rem;
+        display: flex;
+        margin-top: 1.6rem !important;
+        padding: 1.2rem 1.8rem;
     }
 
     textarea {
@@ -78,8 +88,7 @@ input + input {
         grid-column: span 2;
     }
 
-    input[name="imagenes[]"] {
-        margin-bottom: 2rem;
-        cursor: pointer;
+    button {
+        grid-column: span 5;
     }
 }

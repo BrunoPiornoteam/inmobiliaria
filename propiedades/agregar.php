@@ -80,6 +80,7 @@ $tiposPropiedades = $stmt->fetchAll(PDO::FETCH_COLUMN);
     <h1>Agregar Nueva Propiedad</h1>
     <form method="POST" enctype="multipart/form-data" class="agregar">
         <input type="text" name="titulo" placeholder="Título" required>
+        <input type="file" name="imagenes[]" multiple>
         <textarea name="descripcion" placeholder="Descripción" required></textarea>
         <input type="number" name="precio" placeholder="Precio" required step="1000">
         <select name="tipo" required>
@@ -98,7 +99,6 @@ $tiposPropiedades = $stmt->fetchAll(PDO::FETCH_COLUMN);
         <input type="text" name="ubicacion" placeholder="Ubicación" required>
         <input type="number" name="tamano" placeholder="Tamaño (m²)" required step="1">
         
-        <input type="file" name="imagenes[]" multiple>
         <button type="submit">Agregar Propiedad</button>
     </form>
 </div>
