@@ -70,34 +70,41 @@ $propiedades = $stmt->fetchAll(PDO::FETCH_ASSOC);
     <a href="agregar.php" class="button--blue">Agregar Nueva Propiedad</a>
     
     <!-- Formulario de filtros -->
-    <form method="GET">
-        <label for="tipo">Filtrar por tipo:</label>
-        <select name="tipo">
-            <option value="" <?= empty($_GET['tipo']) ? 'selected' : '' ?>>Todos</option>
-            <?php foreach ($tipos_propiedad as $key => $label): ?>
-                <option value="<?= $key ?>" <?= ($_GET['tipo'] ?? '') == $key ? 'selected' : '' ?>><?= $label ?></option>
-            <?php endforeach; ?>
-        </select>
+    <form method="GET" class="listado">
+        <fieldset>
+            <label for="tipo">Filtrar por Tipo:</label>
+            <select name="tipo">
+                <option value="" <?= empty($_GET['tipo']) ? 'selected' : '' ?>>Todos</option>
+                <?php foreach ($tipos_propiedad as $key => $label): ?>
+                    <option value="<?= $key ?>" <?= ($_GET['tipo'] ?? '') == $key ? 'selected' : '' ?>><?= $label ?></option>
+                <?php endforeach; ?>
+            </select>
+        </fieldset>
 
-        <label for="tipo_operacion">Estado:</label>
-        <select name="tipo_operacion">
-            <option value="" <?= empty($_GET['tipo_operacion']) ? 'selected' : '' ?>>Todos</option>
-            <option value="Venta" <?= ($_GET['tipo_operacion'] ?? '') == 'Venta' ? 'selected' : '' ?>>Venta</option>
-            <option value="Alquiler" <?= ($_GET['tipo_operacion'] ?? '') == 'Alquiler' ? 'selected' : '' ?>>Alquiler</option>
-        </select>
+        <fieldset>
+            <label for="tipo_operacion">Filtrar por Estado:</label>
+            <select name="tipo_operacion">
+                <option value="" <?= empty($_GET['tipo_operacion']) ? 'selected' : '' ?>>Todos</option>
+                <option value="Venta" <?= ($_GET['tipo_operacion'] ?? '') == 'Venta' ? 'selected' : '' ?>>Venta</option>
+                <option value="Alquiler" <?= ($_GET['tipo_operacion'] ?? '') == 'Alquiler' ? 'selected' : '' ?>>Alquiler</option>
+            </select>
+        </fieldset>
 
-        <label for="orden">Ordenar por:</label>
-        <select name="orden">
-            <option value="id_desc" <?= ($_GET['orden'] ?? '') == 'id_desc' ? 'selected' : '' ?>>Más recientes</option>
-            <option value="id_asc" <?= ($_GET['orden'] ?? '') == 'id_asc' ? 'selected' : '' ?>>Más antiguas</option>
-            <option value="precio_asc" <?= ($_GET['orden'] ?? '') == 'precio_asc' ? 'selected' : '' ?>>Menor precio</option>
-            <option value="precio_desc" <?= ($_GET['orden'] ?? '') == 'precio_desc' ? 'selected' : '' ?>>Mayor precio</option>
-        </select>
+        <fieldset>
+            <label for="orden">Ordenar:</label>
+            <select name="orden">
+                <option value="id_desc" <?= ($_GET['orden'] ?? '') == 'id_desc' ? 'selected' : '' ?>>Más recientes</option>
+                <option value="id_asc" <?= ($_GET['orden'] ?? '') == 'id_asc' ? 'selected' : '' ?>>Más antiguas</option>
+                <option value="precio_asc" <?= ($_GET['orden'] ?? '') == 'precio_asc' ? 'selected' : '' ?>>Menor precio</option>
+                <option value="precio_desc" <?= ($_GET['orden'] ?? '') == 'precio_desc' ? 'selected' : '' ?>>Mayor precio</option>
+            </select>
+        </fieldset>
+
         <?php if (!empty($_GET['tipo']) || !empty($_GET['tipo_operacion']) || !empty($_GET['orden'])): ?>
-            <button type="button" onclick="window.location.href='index.php'">Limpiar filtros</button>
+            <button type="button" onclick="window.location.href='index.php'" class="button--blue">Limpiar filtros</button>
         <?php endif; ?>
 
-        <button type="submit">Aplicar</button>
+        <button type="submit" class="button--yellow">Aplicar</button>
     </form>
 
     <?php if (empty($propiedades)): ?>
@@ -131,7 +138,7 @@ $propiedades = $stmt->fetchAll(PDO::FETCH_ASSOC);
                     <td><?php echo htmlspecialchars($propiedad['tipo_operacion']); ?></td>
                     <td><?php echo htmlspecialchars($propiedad['estado']); ?></td>
                     <td>
-                        <a href="single_propiedad.php?id=<?= $propiedad['id'] ?>" class="button--blue">Ver más</a>
+                        <a href="single_propiedad.php?id=<?= $propiedad['id'] ?>" class="link">Ver más</a>
                     </td>
                 </tr>
             <?php endforeach; ?>

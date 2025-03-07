@@ -39,14 +39,14 @@ $stmt = $pdo->query("SELECT * FROM tipos_propiedades");
 $tipos = $stmt->fetchAll(PDO::FETCH_ASSOC);
 ?>
 
-<div class="dashboard-container">
+<div class="dashboard-container listado-propiedades">
     <h1 class="welcome-title">Tipos de Propiedades</h1>
     
     <?php if ($message): ?>
         <div class="alert"><?php echo htmlspecialchars($message); ?></div>
     <?php endif; ?>
     
-    <form method="POST">
+    <form method="POST" class="tipo-propiedades">
         <input type="text" name="tipo" placeholder="Nombre del tipo" required>
         <button type="submit">Agregar Tipo</button>
     </form>

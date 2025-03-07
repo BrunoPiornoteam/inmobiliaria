@@ -82,12 +82,6 @@ $tiposPropiedades = $stmt->fetchAll(PDO::FETCH_COLUMN);
         <input type="text" name="titulo" placeholder="Título" required>
         <input type="file" name="imagenes[]" multiple>
         <textarea name="descripcion" placeholder="Descripción" required></textarea>
-        <input type="number" name="precio" placeholder="Precio" required step="1000">
-        <select name="tipo" required>
-            <?php foreach ($tiposPropiedades as $tipo): ?>
-                <option value="<?php echo htmlspecialchars($tipo); ?>"><?php echo htmlspecialchars($tipo); ?></option>
-            <?php endforeach; ?>
-        </select>
         <fieldset name="tipo_operacion">
             <label>
                 <input type="radio" name="tipo_operacion" value="Venta" required> Venta
@@ -96,6 +90,13 @@ $tiposPropiedades = $stmt->fetchAll(PDO::FETCH_COLUMN);
                 <input type="radio" name="tipo_operacion" value="Alquiler" required> Alquiler
             </label>
         </fieldset>
+        <select name="tipo" required>
+            <option value="" selected disabled>Tipo de Propiedad</option>
+            <?php foreach ($tiposPropiedades as $tipo): ?>
+                <option value="<?php echo htmlspecialchars($tipo); ?>"><?php echo htmlspecialchars($tipo); ?></option>
+            <?php endforeach; ?>
+        </select>
+        <input type="number" name="precio" placeholder="Precio" required step="1000">
         <input type="text" name="ubicacion" placeholder="Ubicación" required>
         <input type="number" name="tamano" placeholder="Tamaño (m²)" required step="1">
         

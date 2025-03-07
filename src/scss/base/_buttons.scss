@@ -11,15 +11,19 @@
     @include m.button(v.$white, v.$black, block, v.$secondaryc);
 }
 
+.link {
+    @include m.link(v.$secondaryc, v.$mainc);
+}
+
 button[type="submit"] {
     background-color: v.$mainc;
     color: white;
     padding: 15px 20px;
     border: none;
-    border-radius: 5px;
+    border-radius: 3rem;
     width: 100%;
     cursor: pointer;
-    font-size: 18px;
+    font-size: 1.8rem;
     transition: all 0.3s ease;
 }
 

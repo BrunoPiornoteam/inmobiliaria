@@ -34,13 +34,28 @@
     text-align: center;
     border: none;
     border-radius: 3rem;
-    width: 20rem;
-    height: 6rem;
+    min-width: 20rem;
+    max-width: 100%;
+    height: auto;
     padding: 1rem 1.5rem;
 
     &:hover {
         cursor: pointer;
         background-color: $bgHover;
-        transition: 1s ease;
+        transition: .5s ease;
+    }
+}
+
+@mixin link($color, $hcolor) {
+    font-family: v.$font_primary;
+    color: $color;
+    font-size: 1.4rem;
+    font-weight: 600;
+    text-decoration: none;
+
+    &:hover {
+        cursor: pointer;
+        color: $hcolor;
+        transition: .5s ease;
     }
 }

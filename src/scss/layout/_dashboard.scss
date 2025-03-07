@@ -1,4 +1,5 @@
 @use 'base/variables' as v;
+@use "sass:color";
 
 .dashboard-container {
     text-align: center;
@@ -20,4 +21,57 @@
 .welcome-description {
     font-size: 18px;
     color: #7f8c8d;
+}
+
+.dashboard-table {
+    width: 100%;
+    padding: 0 3rem;
+    margin-top: 3rem;
+    border-collapse: collapse;
+    
+    thead {
+        th {
+            background: color.adjust(v.$grey, $lightness: -20%);
+            padding: 10px;
+            color: v.$white;
+            border: 1px solid #ddd;
+        }
+    }
+
+    tbody {
+        td {
+            padding: 10px;
+            border: 1px solid #ddd;
+            vertical-align: middle;
+        }
+
+        tr:nth-child(odd) {
+            background-color: #f9f9f9;
+        }
+
+        tr:hover {
+            background-color: #eaeaea;
+        }
+    }
+
+    td {
+        padding-top: 8px;
+        padding-bottom: 8px;
+    }
+    
+    th, td {
+        border: 1px solid #ddd;
+    }
+}
+
+.listado-propiedades {
+    h2 {
+        margin: 2rem 0 0;
+    }
+
+    ul {
+        margin-top: 2rem;
+        padding: 0;
+        list-style: none;
+    }
 }

@@ -10,7 +10,7 @@ select {
     padding: 1.2rem 1.8rem;
     margin: 1.6rem 0;
     border: .2rem solid #ddd;
-    border-radius: .5rem;
+    border-radius: 3rem;
     font-size: 1.6rem;
     transition: border 0.3s ease;
 
@@ -44,27 +44,19 @@ input + input {
         margin-bottom: 2rem;
         cursor: pointer;
         border: .2rem solid v.$mainc;
-        border-radius: .5rem;
+        border-radius: 3rem;
         display: flex;
         margin-top: 1.6rem !important;
         padding: 1.2rem 1.8rem;
     }
 
     textarea {
-        grid-column: span 3;
+        grid-column: span 4;
         resize: none;
     }
 
-    input[name="precio"] {
-        grid-column: span 2;
-    }
-
-    select {
-        grid-column: span 3;
-    }
-
     fieldset {
-        grid-column: span 2;
+        grid-column: span 1;
         display: grid;
         grid-template-columns: 1fr 1fr;
         gap: 20px;
@@ -80,6 +72,14 @@ input + input {
         }
     }
 
+    input[name="precio"] {
+        grid-column: span 2;
+    }
+
+    select {
+        grid-column: span 3;
+    }
+
     input[name="ubicacion"] {
         grid-column: span 3;
     }
@@ -90,5 +90,49 @@ input + input {
 
     button {
         grid-column: span 5;
+    }
+}
+
+.listado {
+    margin-top: 3rem;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+
+    fieldset {
+        display: flex;
+        align-items: center;
+        gap: .5rem;
+        padding: 0;
+        border: none;
+
+        label {
+            text-wrap: nowrap;
+        }
+
+        select {
+            margin: 0;
+        }
+    }
+
+    button {
+        width: fit-content;
+        min-width: auto;
+        font-size: 1.4rem;
+        border-radius: 3rem;
+    }
+}
+
+.tipo-propiedades {
+    display: flex;
+    gap: 2rem;
+
+    input {
+        margin: 0;
+    }
+
+    button {
+        height: fit-content;
     }
 }

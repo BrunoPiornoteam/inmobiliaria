@@ -318,14 +318,15 @@ section {
   text-align: center;
   border: none;
   border-radius: 3rem;
-  width: 20rem;
-  height: 6rem;
+  min-width: 20rem;
+  max-width: 100%;
+  height: auto;
   padding: 1rem 1.5rem;
 }
 .button--yellow:hover {
   cursor: pointer;
   background-color: #3498db;
-  transition: 1s ease;
+  transition: 0.5s ease;
 }
 
 .button--blue {
@@ -341,14 +342,15 @@ section {
   text-align: center;
   border: none;
   border-radius: 3rem;
-  width: 20rem;
-  height: 6rem;
+  min-width: 20rem;
+  max-width: 100%;
+  height: auto;
   padding: 1rem 1.5rem;
 }
 .button--blue:hover {
   cursor: pointer;
   background-color: #d3a971;
-  transition: 1s ease;
+  transition: 0.5s ease;
 }
 
 .button--white {
@@ -364,14 +366,28 @@ section {
   text-align: center;
   border: none;
   border-radius: 3rem;
-  width: 20rem;
-  height: 6rem;
+  min-width: 20rem;
+  max-width: 100%;
+  height: auto;
   padding: 1rem 1.5rem;
 }
 .button--white:hover {
   cursor: pointer;
   background-color: #3498db;
-  transition: 1s ease;
+  transition: 0.5s ease;
+}
+
+.link {
+  font-family: "Poppins", serif;
+  color: #3498db;
+  font-size: 1.4rem;
+  font-weight: 600;
+  text-decoration: none;
+}
+.link:hover {
+  cursor: pointer;
+  color: #d3a971;
+  transition: 0.5s ease;
 }
 
 button[type=submit] {
@@ -379,10 +395,10 @@ button[type=submit] {
   color: white;
   padding: 15px 20px;
   border: none;
-  border-radius: 5px;
+  border-radius: 3rem;
   width: 100%;
   cursor: pointer;
-  font-size: 18px;
+  font-size: 1.8rem;
   transition: all 0.3s ease;
 }
 
@@ -400,7 +416,7 @@ select {
   padding: 1.2rem 1.8rem;
   margin: 1.6rem 0;
   border: 0.2rem solid #ddd;
-  border-radius: 0.5rem;
+  border-radius: 3rem;
   font-size: 1.6rem;
   transition: border 0.3s ease;
 }
@@ -437,23 +453,17 @@ input + input {
   margin-bottom: 2rem;
   cursor: pointer;
   border: 0.2rem solid #d3a971;
-  border-radius: 0.5rem;
+  border-radius: 3rem;
   display: flex;
   margin-top: 1.6rem !important;
   padding: 1.2rem 1.8rem;
 }
 .agregar textarea {
-  grid-column: span 3;
+  grid-column: span 4;
   resize: none;
 }
-.agregar input[name=precio] {
-  grid-column: span 2;
-}
-.agregar select {
-  grid-column: span 3;
-}
 .agregar fieldset {
-  grid-column: span 2;
+  grid-column: span 1;
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 20px;
@@ -467,6 +477,12 @@ input + input {
   gap: 1rem;
   justify-content: center;
 }
+.agregar input[name=precio] {
+  grid-column: span 2;
+}
+.agregar select {
+  grid-column: span 3;
+}
 .agregar input[name=ubicacion] {
   grid-column: span 3;
 }
@@ -475,6 +491,44 @@ input + input {
 }
 .agregar button {
   grid-column: span 5;
+}
+
+.listado {
+  margin-top: 3rem;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+.listado fieldset {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0;
+  border: none;
+}
+.listado fieldset label {
+  text-wrap: nowrap;
+}
+.listado fieldset select {
+  margin: 0;
+}
+.listado button {
+  width: fit-content;
+  min-width: auto;
+  font-size: 1.4rem;
+  border-radius: 3rem;
+}
+
+.tipo-propiedades {
+  display: flex;
+  gap: 2rem;
+}
+.tipo-propiedades input {
+  margin: 0;
+}
+.tipo-propiedades button {
+  height: fit-content;
 }
 
 .login-container {
@@ -584,6 +638,46 @@ input + input {
 .welcome-description {
   font-size: 18px;
   color: #7f8c8d;
+}
+
+.dashboard-table {
+  width: 100%;
+  padding: 0 3rem;
+  margin-top: 3rem;
+  border-collapse: collapse;
+}
+.dashboard-table thead th {
+  background: rgb(64.528, 72.816, 83.472);
+  padding: 10px;
+  color: #fff;
+  border: 1px solid #ddd;
+}
+.dashboard-table tbody td {
+  padding: 10px;
+  border: 1px solid #ddd;
+  vertical-align: middle;
+}
+.dashboard-table tbody tr:nth-child(odd) {
+  background-color: #f9f9f9;
+}
+.dashboard-table tbody tr:hover {
+  background-color: #eaeaea;
+}
+.dashboard-table td {
+  padding-top: 8px;
+  padding-bottom: 8px;
+}
+.dashboard-table th, .dashboard-table td {
+  border: 1px solid #ddd;
+}
+
+.listado-propiedades h2 {
+  margin: 2rem 0 0;
+}
+.listado-propiedades ul {
+  margin-top: 2rem;
+  padding: 0;
+  list-style: none;
 }
 
 .navigation-buttons {
