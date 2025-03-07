@@ -410,11 +410,12 @@ button[type=submit]:hover {
 input[type=text],
 input[type=password],
 input[type=number],
+input[type=email],
+input[type=tel],
 textarea,
 select {
   width: 100%;
   padding: 1.2rem 1.8rem;
-  margin: 1.6rem 0;
   border: 0.2rem solid #ddd;
   border-radius: 3rem;
   font-size: 1.6rem;
@@ -423,6 +424,8 @@ select {
 input[type=text]:focus,
 input[type=password]:focus,
 input[type=number]:focus,
+input[type=email]:focus,
+input[type=tel]:focus,
 textarea:focus,
 select:focus {
   outline: none;
@@ -443,7 +446,7 @@ input + input {
 .agregar {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
-  column-gap: 1rem;
+  gap: 2rem 1rem;
   width: 70%;
 }
 .agregar input[name=titulo] {
@@ -529,6 +532,12 @@ input + input {
 }
 .tipo-propiedades button {
   height: fit-content;
+}
+
+.clientes {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem 1rem;
 }
 
 .login-container {
@@ -816,4 +825,17 @@ input + input {
 }
 .second-header .logout-button:hover {
   background: #3498db;
+}
+
+.clientes-content {
+  width: 90%;
+}
+
+.clientes-title {
+  margin-top: 3.4rem;
+  margin-bottom: 2rem;
+}
+
+.clientes-editar {
+  width: 80%;
 }

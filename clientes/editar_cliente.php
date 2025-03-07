@@ -59,16 +59,19 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 }
 ?>
 
-<h1>Editar Cliente</h1>
-<form method="POST">
-    <input type="text" name="nombre" value="<?php echo htmlspecialchars($cliente['nombre']); ?>" required>
-    <input type="email" name="email" value="<?php echo htmlspecialchars($cliente['email']); ?>" required>
-    <input type="tel" name="telefono" value="<?php echo htmlspecialchars($cliente['telefono']); ?>" required>
-    <textarea name="direccion" required><?php echo htmlspecialchars($cliente['direccion']); ?></textarea>
-    <textarea name="notas" placeholder="Notas adicionales"><?php echo htmlspecialchars($cliente['notas']); ?></textarea>
-    <button type="submit">Actualizar Cliente</button>
-</form>
-
-<a class="button" href="clientes.php">Volver a la lista</a>
+<div class="dashboard-container">
+    <div class="clientes-editar">
+        <h1>Editar Cliente</h1>
+        <form method="POST" class="clientes">
+            <input type="text" name="nombre" value="<?php echo htmlspecialchars($cliente['nombre']); ?>" required>
+            <input type="email" name="email" value="<?php echo htmlspecialchars($cliente['email']); ?>" required>
+            <input type="tel" name="telefono" value="<?php echo htmlspecialchars($cliente['telefono']); ?>" required>
+            <textarea name="direccion" required><?php echo htmlspecialchars($cliente['direccion']); ?></textarea>
+            <textarea name="notas" placeholder="Notas adicionales"><?php echo htmlspecialchars($cliente['notas']); ?></textarea>
+            <button type="submit">Actualizar Cliente</button>
+        </form>
+        <a class="button" href="clientes.php">Volver a la lista</a>
+    </div>
+</div>
 
 <?php include('../includes/footer.php'); ?>

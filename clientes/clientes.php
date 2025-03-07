@@ -74,51 +74,53 @@ try {
 }
 ?>
 
-<section class="clientes-content">
-    <h1>Gestión de Clientes</h1>
-    <form method="POST">
-        <input type="text" name="nombre" placeholder="Nombre" required>
-        <input type="email" name="email" placeholder="Email" required>
-        <input type="tel" name="telefono" placeholder="Teléfono" required>
-        <textarea name="direccion" placeholder="Dirección" required></textarea>
-        <textarea name="notas" placeholder="Notas adicionales"></textarea> 
-        <button type="submit" name="action" value="add">Agregar Cliente</button>
-    </form>
+<section class="dashboard-container">
+    <div class="clientes-content">
+        <h1>Gestión de Clientes</h1>
+        <form method="POST" class="clientes">
+            <input type="text" name="nombre" placeholder="Nombre" required>
+            <input type="email" name="email" placeholder="Email" required>
+            <input type="tel" name="telefono" placeholder="Teléfono" required>
+            <textarea name="direccion" placeholder="Dirección" required></textarea>
+            <textarea name="notas" placeholder="Notas adicionales"></textarea> 
+            <button type="submit" name="action" value="add">Agregar Cliente</button>
+        </form>
 
-    <h2>Lista de Clientes</h2>
-    <table>
-        <thead>
-            <tr>
-                <th>ID</th>
-                <th>Nombre</th>
-                <th>Email</th>
-                <th>Teléfono</th>
-                <th>Dirección</th>
-                <th>Notas</th>
-                <th>Acciones</th>
-            </tr>
-        </thead>
-        <tbody>
-            <?php if (empty($clientes)): ?>
-                <tr><td colspan="6">No hay clientes registrados.</td></tr>
-            <?php else: ?>
-                <?php foreach ($clientes as $cliente): ?>
-                    <tr>
-                        <td><?php echo htmlspecialchars($cliente['id']); ?></td>
-                        <td><?php echo htmlspecialchars($cliente['nombre']); ?></td>
-                        <td><?php echo htmlspecialchars($cliente['email']); ?></td>
-                        <td><?php echo htmlspecialchars($cliente['telefono']); ?></td>
-                        <td><?php echo htmlspecialchars($cliente['direccion']); ?></td>
-                        <td><?php echo htmlspecialchars($cliente['notas'] ?? ''); ?></td>
-                        <td>
-                            <a href="editar_cliente.php?id=<?php echo $cliente['id']; ?>">Editar</a>
-                            <a href="#" onclick="confirmDelete(<?php echo $cliente['id']; ?>); return false;">Eliminar</a>
-                        </td>
+        <h2 class="clientes-title">Lista de Clientes</h2>
+        <table class="dashboard-table">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Nombre</th>
+                    <th>Email</th>
+                    <th>Teléfono</th>
+                    <th>Dirección</th>
+                    <th>Notas</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php if (empty($clientes)): ?>
+                    <tr><td colspan="6">No hay clientes registrados.</td></tr>
+                <?php else: ?>
+                    <?php foreach ($clientes as $cliente): ?>
+                        <tr>
+                            <td><?php echo htmlspecialchars($cliente['id']); ?></td>
+                            <td><?php echo htmlspecialchars($cliente['nombre']); ?></td>
+                            <td><?php echo htmlspecialchars($cliente['email']); ?></td>
+                            <td><?php echo htmlspecialchars($cliente['telefono']); ?></td>
+                            <td><?php echo htmlspecialchars($cliente['direccion']); ?></td>
+                            <td><?php echo htmlspecialchars($cliente['notas'] ?? ''); ?></td>
+                            <td>
+                                <a href="editar_cliente.php?id=<?php echo $cliente['id']; ?>" class="link">Editar</a>
+                                <a href="#" onclick="confirmDelete(<?php echo $cliente['id']; ?>); return false;" class="link">Eliminar</a>
+                            </td>
 
-                    </tr>
-                <?php endforeach; ?>
-            <?php endif; ?>
-        </tbody>
-    </table>
+                        </tr>
+                    <?php endforeach; ?>
+                <?php endif; ?>
+            </tbody>
+        </table>
+    </div>
 </section>
 <?php include('../includes/footer.php'); ?>
