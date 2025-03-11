@@ -24,11 +24,18 @@ select {
 input + input {
     margin-top: 0 !important;
 }
+
 /* Estilo para mostrar el mensaje de error */
 .error {
     color: red;
     margin-top: 15px;
     font-size: 1.6rem;
+}
+
+.login {
+    display: flex;
+    flex-direction: column;
+    gap: 1.6rem;
 }
 
 .agregar {
@@ -41,35 +48,67 @@ input + input {
         grid-column: span 4;
     }
 
-    input[name="imagenes[]"] {
-        margin-bottom: 2rem;
-        cursor: pointer;
+    .imagenes {
+        display: inline-block;
+        padding: 1.2rem 1.8rem;
+        height: 100%;
+        background: transparent;
         border: .2rem solid v.$mainc;
         border-radius: 3rem;
-        display: flex;
-        margin-top: 1.6rem !important;
-        padding: 1.2rem 1.8rem;
+        cursor: pointer;
+        transition: .3s all ease;
+
+        &:hover {
+            background: v.$mainc;
+            color: v.$white;
+        }
+    }
+
+    input[name="imagenes[]"] {
+        display: none;
     }
 
     textarea {
         grid-column: span 4;
         resize: none;
+        height: 10rem;
     }
 
     fieldset {
         grid-column: span 1;
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 20px;
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
         align-items: center;
         justify-content: center;
         border: none;
+        padding: 0;
 
         label {
             cursor: pointer;
             display: flex;
+            align-items: center;
             gap: 1rem;
             justify-content: center;
+            border: .2rem solid v.$mainc;
+            border-radius: 3rem;
+            transition: .3s all ease;
+            width: 100%;
+            height: 100%;
+
+            &:hover {
+                background: v.$mainc;
+                color: v.$white;
+            }
+        }
+
+        input {
+            display: none;
+
+            &:checked + label {
+                background: v.$mainc;
+                color: v.$white;
+            }
         }
     }
 
@@ -79,6 +118,7 @@ input + input {
 
     select {
         grid-column: span 3;
+        cursor: pointer;
     }
 
     input[name="ubicacion"] {
@@ -142,4 +182,8 @@ input + input {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 2rem 1rem;
+
+    textarea {
+        resize: none;
+    }
 }

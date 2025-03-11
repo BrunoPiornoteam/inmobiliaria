@@ -80,15 +80,14 @@ $tiposPropiedades = $stmt->fetchAll(PDO::FETCH_COLUMN);
     <h1>Agregar Nueva Propiedad</h1>
     <form method="POST" enctype="multipart/form-data" class="agregar">
         <input type="text" name="titulo" placeholder="Título" required>
-        <input type="file" name="imagenes[]" multiple>
+        <input type="file" name="imagenes[]" multiple id="agregarImg">
+        <label for="agregarImg" class="imagenes">Agregar Imágenes</label>
         <textarea name="descripcion" placeholder="Descripción" required></textarea>
         <fieldset name="tipo_operacion">
-            <label>
-                <input type="radio" name="tipo_operacion" value="Venta" required> Venta
-            </label>
-            <label>
-                <input type="radio" name="tipo_operacion" value="Alquiler" required> Alquiler
-            </label>
+            <input type="radio" name="tipo_operacion" value="Venta" required id="venta">
+            <label for="venta">Venta</label>
+            <input type="radio" name="tipo_operacion" value="Alquiler" required id="alquiler">
+            <label for="alquiler">Alquiler</label>
         </fieldset>
         <select name="tipo" required>
             <option value="" selected disabled>Tipo de Propiedad</option>

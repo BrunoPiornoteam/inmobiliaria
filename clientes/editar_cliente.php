@@ -70,7 +70,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             <textarea name="notas" placeholder="Notas adicionales"><?php echo htmlspecialchars($cliente['notas']); ?></textarea>
             <button type="submit">Actualizar Cliente</button>
         </form>
-        <a class="button" href="clientes.php">Volver a la lista</a>
+        <a class="link" href="clientes.php">Volver a la lista</a>
     </div>
 </div>
 
