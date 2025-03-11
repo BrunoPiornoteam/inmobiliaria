@@ -47,15 +47,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             });
         </script>";
     }
-} else {
-    echo "<script>
-        Swal.fire({
-            title: 'Error',
-            text: 'Error en los datos ingresados. Verifica la información.',
-            icon: 'error',
-            confirmButtonText: 'Aceptar'
-        });
-    </script>";
 }
 ?>
 

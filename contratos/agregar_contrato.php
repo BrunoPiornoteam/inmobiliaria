@@ -7,12 +7,15 @@ if (!isset($_SESSION['user_id'])) {
     exit;
 }
 
+// Obtén todas las propiedades
 $stmt = $pdo->query("SELECT id, titulo FROM propiedades");
 $propiedades = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
+// Obtén todos los clientes
 $stmt = $pdo->query("SELECT id, nombre FROM clientes ORDER BY id DESC");
 $clientes = $stmt->fetchAll(PDO::FETCH_ASSOC) ?: []; 
 
+// Procesar la solicitud POST cuando se agrega un contrato
 if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['action']) && $_POST['action'] == 'add') {
     $propiedad_id = $_POST['propiedad_id'];
     $cliente_id = $_POST['cliente_id'];
@@ -58,7 +61,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['action']) && $_POST['a
 
     <select name="propiedad_id" id="propiedad_id" required>
         <option value="">Selecciona una propiedad</option>
-        <!-- Aquí se llenarán las propiedades usando AJAX -->
+        <?php foreach ($propiedades as $propiedad): ?>
+            <option value="<?php echo htmlspecialchars($propiedad['id']); ?>">
+                <?php echo htmlspecialchars($propiedad['titulo']); ?>
+            </option>
+        <?php endforeach; ?>
     </select>
 
     <select name="tipo_contrato" required>
@@ -77,39 +84,4 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['action']) && $_POST['a
 </form>
 
 <a href="ver_contratos.php">Ver Contratos</a>
-<script>
-document.getElementById('cliente_id').addEventListener('change', function() {
-    var clienteId = this.value;
-
-    // Limpiar el select de propiedades
-    var propiedadesSelect = document.getElementById('propiedad_id');
-    propiedadesSelect.innerHTML = '<option value="">Selecciona una propiedad</option>';
-
-    if (clienteId) {
-        var xhr = new XMLHttpRequest();
-        xhr.open('POST', '../propiedades/get_propiedades.php', true);
-        xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-        xhr.onload = function() {
-            if (xhr.status === 200) {
-                var propiedades = JSON.parse(xhr.responseText);
-                console.log(propiedades);
-                propiedades.forEach(function(propiedad) {
-                    var option = document.createElement('option');
-                    option.value = propiedad.id;
-                    option.textContent = propiedad.titulo;
-                    propiedadesSelect.appendChild(option);
-                });
-            } else {
-                console.error('Error en la solicitud:', xhr.statusText); // Manejo de errores
-            }
-        };
-        xhr.onerror = function() {
-            console.error('Error en la conexión.');
-        };
-        xhr.send('cliente_id=' + clienteId);
-    }
-});
-</script>
-
-
 <?php include('../includes/footer.php'); ?>

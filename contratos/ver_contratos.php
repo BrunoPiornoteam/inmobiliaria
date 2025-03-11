@@ -1,47 +1,91 @@
 <?php
-include('includes/db.php');
-include('includes/header.php');
+include('../includes/db.php');
+include('../includes/header.php');
 
-$stmt = $pdo->query("SELECT c.id, p.titulo AS propiedad, cl.nombre AS cliente, c.tipo_contrato, c.precio, c.fecha_inicio, c.fecha_fin, c.estado FROM contratos c JOIN propiedades p ON c.propiedad_id = p.id JOIN clientes cl ON c.cliente_id = cl.id");
-$contratos = $stmt->fetchAll();
+if (!isset($_SESSION['user_id'])) {
+    header('Location: login.php'); 
+    exit;
+}
+
+if (isset($_GET['eliminado']) && $_GET['eliminado'] == '1') {
+    echo "<script>
+        document.addEventListener('DOMContentLoaded', function() {
+            Swal.fire('Eliminado', 'El contrato ha sido eliminado.', 'success');
+        });
+    </script>";
+}
+
+$stmt = $pdo->query("SELECT c.id, p.titulo AS propiedad, cl.nombre AS cliente, 
+                            c.tipo_contrato, c.precio, c.fecha_inicio, c.fecha_fin, c.estado, c.archivo 
+                     FROM contratos c
+                     JOIN propiedades p ON c.propiedad_id = p.id
+                     JOIN clientes cl ON c.cliente_id = cl.id
+                     ORDER BY c.fecha_creacion DESC");
+
+$contratos = $stmt->fetchAll(PDO::FETCH_ASSOC);
 ?>
 
-<h1>Lista de Contratos</h1>
-<table>
-    <thead>
-        <tr>
-            <th>ID</th>
-            <th>Propiedad</th>
-            <th>Cliente</th>
-            <th>Tipo</th>
-            <th>Precio</th>
-            <th>Fechas</th>
-            <th>Estado</th>
-            <th>Archivo</th>
-        </tr>
-    </thead>
-    <tbody>
-        <?php foreach ($contratos as $contrato): ?>
-            <tr>
-                <td><?php echo $contrato['id']; ?></td>
-                <td><?php echo $contrato['propiedad']; ?></td>
-                <td><?php echo $contrato['cliente']; ?></td>
-                <td><?php echo ucfirst($contrato['tipo_contrato']); ?></td>
-                <td><?php echo $contrato['precio']; ?></td>
-                <td><?php echo $contrato['fecha_inicio']; ?> - <?php echo $contrato['fecha_fin']; ?></td>
-                <td><?php echo ucfirst($contrato['estado']); ?></td>
-                <td>
-                    <?php if (!empty($contrato['archivo'])): ?>
-                        <a href="uploads/contratos/<?php echo $contrato['archivo']; ?>" target="_blank">📄 Ver Archivo</a>
-                    <?php else: ?>
-                        No adjunto
-                    <?php endif; ?>
-                </td>
-            </tr>
-        <?php endforeach; ?>
-    </tbody>
-</table>
+<h2>Listado de Contratos</h2>
+<a href="agregar_contrato.php">Agregar Nuevo Contrato</a>
 
-<a href="agregar_contrato.php">Agregar Contrato</a>
+<section class="dashboard-container">
+    <table>
+        <thead>
+            <tr>
+                <th>Propiedad</th>
+                <th>Cliente</th>
+                <th>Tipo</th>
+                <th>Precio</th>
+                <th>Fecha Inicio</th>
+                <th>Fecha Fin</th>
+                <th>Estado</th>
+                <th>Documento</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php foreach ($contratos as $contrato): ?>
+                <tr>
+                    <td><?php echo htmlspecialchars($contrato['propiedad']); ?></td>
+                    <td><?php echo htmlspecialchars($contrato['cliente']); ?></td>
+                    <td><?php echo htmlspecialchars($contrato['tipo_contrato']); ?></td>
+                    <td>$<?php echo number_format($contrato['precio'], 2); ?></td>
+                    <td><?php echo htmlspecialchars($contrato['fecha_inicio']); ?></td>
+                    <td><?php echo htmlspecialchars($contrato['fecha_fin']); ?></td>
+                    <td><?php echo htmlspecialchars($contrato['estado']); ?></td>
+                    <td>
+                        <?php if ($contrato['archivo']): ?>
+                            <a href="uploads/contratos/<?php echo htmlspecialchars($contrato['archivo']); ?>" target="_blank">📄 Ver Documento</a>
+                        <?php else: ?>
+                            No adjunto
+                        <?php endif; ?>
+                    </td>
+                    <td>
+                        <a href="editar_contrato.php?id=<?php echo $contrato['id']; ?>">Editar</a>
+                        <a href="#" onclick="confirmarEliminacion(<?php echo $contrato['id']; ?>)">Eliminar</a>
+                    </td>
+                </tr>
+            <?php endforeach; ?>
+        </tbody>
+    </table>
+</select>
+<script>
+function confirmarEliminacion(contratoId) {
+    Swal.fire({
+        title: "¿Estás seguro?",
+        text: "Esta acción no se puede deshacer.",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#d33",
+        cancelButtonColor: "#3085d6",
+        confirmButtonText: "Sí, eliminar",
+        cancelButtonText: "Cancelar"
+    }).then((result) => {
+        if (result.isConfirmed) {
+            window.location.href = "eliminar_contrato.php?id=" + contratoId;
+        }
+    });
+}
+</script>
 
 <?php include('../includes/footer.php'); ?>
