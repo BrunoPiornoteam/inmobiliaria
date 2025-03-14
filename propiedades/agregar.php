@@ -76,7 +76,6 @@ $tiposPropiedades = $stmt->fetchAll(PDO::FETCH_COLUMN);
 ?>
 
 <div class="dashboard-container">
-    <?php include('../includes/second-header.php');?>
     <h1>Agregar Nueva Propiedad</h1>
     <form method="POST" enctype="multipart/form-data" class="agregar">
         <input type="text" name="titulo" placeholder="Título" required>

@@ -11,6 +11,6 @@
 </head>
 <body>
     <?php include('dashboard.php'); ?>
-    <script src="../src/js/index.js"></script> 
+    <script src="dist/js/index.js" type="text/javascript"></script> 
 </body>
 </html>

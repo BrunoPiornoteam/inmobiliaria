@@ -27,7 +27,6 @@ if (!$user) {
 </head>
 
 <div class="dashboard-container">
-    <?php include('includes/second-header.php');?>
     <div class="notification-banner">
         <p><strong>¡Próximamente!</strong> Aquí estará todo lo que necesitas para gestionar tu inmobiliaria. Estamos en proceso de desarrollo.</p>
     </div>

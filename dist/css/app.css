@@ -726,37 +726,6 @@ input + input {
   list-style: none;
 }
 
-.navigation-buttons {
-  display: flex;
-  flex-direction: column;
-  gap: 4rem;
-  flex: 2;
-  padding: 4rem 0;
-  background: linear-gradient(135deg, #2f353d, #1f2a36);
-}
-@media (max-width: 768px) {
-  .navigation-buttons {
-    flex-direction: column;
-  }
-}
-.navigation-buttons .admin-profile {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 0.5rem;
-}
-.navigation-buttons .admin-profile img {
-  width: 8rem;
-  aspect-ratio: 1;
-  border-radius: 50%;
-  position: relative;
-  border: 0.2rem solid #d3a971;
-}
-.navigation-buttons .admin-profile p {
-  color: #fff;
-  text-transform: capitalize;
-}
-
 .nav-container {
   display: flex;
   flex-direction: column;
@@ -805,6 +774,49 @@ input + input {
 .submenu a {
   padding: 1rem 0;
   color: #fff;
+}
+
+.header {
+  display: flex;
+  flex-direction: column;
+  gap: 4rem;
+  flex: 0;
+  padding: 4rem 0;
+  background: linear-gradient(135deg, #2f353d, #1f2a36);
+}
+.header .navigation-buttons {
+  display: none;
+}
+.header.open {
+  flex: 2;
+}
+.header.open .navigation-buttons {
+  display: block;
+}
+.header.open .second-header {
+  width: 80%;
+}
+@media (max-width: 768px) {
+  .header {
+    flex-direction: column;
+  }
+}
+.header .admin-profile {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+}
+.header .admin-profile img {
+  width: 8rem;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  position: relative;
+  border: 0.2rem solid #d3a971;
+}
+.header .admin-profile p {
+  color: #fff;
+  text-transform: capitalize;
 }
 
 .second-header {
