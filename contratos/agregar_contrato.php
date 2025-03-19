@@ -1,6 +1,6 @@
 <?php
 include('../includes/db.php');
-include('../includes/header.php');
+include('../header.php');
 
 if (!isset($_SESSION['user_id'])) {
     header('Location: login.php'); 
@@ -84,4 +84,4 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['action']) && $_POST['a
 </form>
 
 <a href="ver_contratos.php">Ver Contratos</a>
-<?php include('../includes/footer.php'); ?>
+<?php include('../footer.php'); ?>

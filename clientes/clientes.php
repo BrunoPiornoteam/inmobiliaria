@@ -1,6 +1,6 @@
 <?php
 include('../includes/db.php');
-include('../includes/header.php');
+include('../header.php');
 include('../src/functions/functions.php');
 
 try {
@@ -123,4 +123,4 @@ try {
         </table>
     </div>
 </section>
-<?php include('../includes/footer.php'); ?>
+<?php include('../footer.php'); ?>

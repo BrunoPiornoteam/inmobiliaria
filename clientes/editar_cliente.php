@@ -1,6 +1,6 @@
 <?php
 include('../includes/db.php');
-include('../includes/header.php');
+include('../header.php');
 
 if (!isset($_GET['id'])) {
     die("ID de cliente no proporcionado.");
@@ -65,4 +65,4 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     </div>
 </div>
 
-<?php include('../includes/footer.php'); ?>
+<?php include('../footer.php'); ?>

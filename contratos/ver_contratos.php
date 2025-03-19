@@ -1,6 +1,6 @@
 <?php
 include('../includes/db.php');
-include('../includes/header.php');
+include('../header.php');
 
 if (!isset($_SESSION['user_id'])) {
     header('Location: login.php'); 
@@ -88,4 +88,4 @@ function confirmarEliminacion(contratoId) {
 }
 </script>
 
-<?php include('../includes/footer.php'); ?>
+<?php include('../footer.php'); ?>

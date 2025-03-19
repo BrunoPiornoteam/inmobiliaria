@@ -3,7 +3,7 @@ session_start();
 include('includes/db.php');  
 
 if (isset($_SESSION['user_id'])) {
-    header('Location: dashboard.php');  
+    header('Location: index.php');  
     exit;
 }
 
@@ -17,7 +17,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     if ($user && password_verify($password, $user['password'])) {
         $_SESSION['user_id'] = $user['id'];  
-        header('Location: dashboard.php'); 
+        header('Location: index.php'); 
         exit;
     } else {
         $error = "Usuario o contraseña incorrectos.";

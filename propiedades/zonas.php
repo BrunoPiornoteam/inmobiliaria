@@ -1,6 +1,6 @@
 <?php
 include('../includes/db.php');
-include('../includes/header.php');
+include('../header.php');
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $nombre = $_POST['nombre'];
@@ -28,4 +28,4 @@ $zonas = $stmt->fetchAll(PDO::FETCH_ASSOC);
     <?php endforeach; ?>
 </ul>
 
-<?php include('../includes/footer.php'); ?>
+<?php include('../footer.php'); ?>

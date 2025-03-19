@@ -1,6 +1,6 @@
 <?php
 include('../includes/db.php');
-include('../includes/header.php');
+include('../header.php');
 
 if (!isset($_SESSION['user_id'])) {
     header('Location: login.php'); 
@@ -102,4 +102,4 @@ $tiposPropiedades = $stmt->fetchAll(PDO::FETCH_COLUMN);
     </form>
 </div>
 
-<?php include('../includes/footer.php'); ?>
+<?php include('../footer.php'); ?>

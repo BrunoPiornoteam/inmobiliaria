@@ -1,6 +1,6 @@
 <?php
 include('../includes/db.php');
-include('../includes/header.php');
+include('../header.php');
 
 if (!isset($_SESSION['user_id'])) {
     header('Location: ../login.php'); 
@@ -58,7 +58,7 @@ if (!$propiedad) {
     </form>
 </div>
 
-<?php include('../includes/footer.php'); ?>
+<?php include('../footer.php'); ?>
 <?php if (isset($_GET['success']) && $_GET['success'] == 'true') : ?>
     <script>
         Swal.fire({

@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Panel de Administración</title>
-    <link rel="stylesheet" href="../dist/css/app.css">
+    <link rel="stylesheet" href="/inmobiliaria/dist/css/app.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
@@ -25,7 +25,7 @@ $user = $stmt->fetch(PDO::FETCH_ASSOC);
         </div>
 
         <div class="nav-container">
-            <a class="nav-button" href="/inmobiliaria/dashboard.php">
+            <a class="nav-button" href="/inmobiliaria">
                 <i class="fas fa-home"></i> Inicio
             </a>
 
@@ -131,5 +131,3 @@ $user = $stmt->fetch(PDO::FETCH_ASSOC);
         </a>
     </div>
 </div>
-</body>
-</html>

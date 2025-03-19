@@ -1,6 +1,6 @@
 <?php
 include('includes/db.php');
-include('includes/header.php');
+include('header.php');
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['action']) && $_POST['action'] == 'add') {
     $contrato_id = $_POST['contrato_id'];
@@ -64,4 +64,4 @@ $pagos = $stmt->fetchAll();
     </tbody>
 </table>
 
-<?php include('includes/footer.php'); ?>
+<?php include('footer.php'); ?>

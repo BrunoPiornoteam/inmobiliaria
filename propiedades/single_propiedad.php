@@ -1,6 +1,6 @@
 <?php
 include('../includes/db.php');
-include('../includes/header.php');
+include('../header.php');
 
 $id = $_GET['id'] ?? null;
 if (!$id) {
@@ -255,4 +255,4 @@ $success = isset($_GET['success']) ? $_GET['success'] : 0;
 </style>
 
 
-<?php include('../includes/footer.php'); ?>
+<?php include('../footer.php'); ?>
