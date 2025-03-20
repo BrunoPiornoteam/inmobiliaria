@@ -25,67 +25,71 @@ $stmt = $pdo->query("SELECT c.id, p.titulo AS propiedad, cl.nombre AS cliente,
 $contratos = $stmt->fetchAll(PDO::FETCH_ASSOC);
 ?>
 
-<h2>Listado de Contratos</h2>
-<a href="agregar_contrato.php">Agregar Nuevo Contrato</a>
-
 <section class="dashboard-container">
-    <table>
-        <thead>
-            <tr>
-                <th>Propiedad</th>
-                <th>Cliente</th>
-                <th>Tipo</th>
-                <th>Precio</th>
-                <th>Fecha Inicio</th>
-                <th>Fecha Fin</th>
-                <th>Estado</th>
-                <th>Documento</th>
-                <th>Acciones</th>
-            </tr>
-        </thead>
-        <tbody>
-            <?php foreach ($contratos as $contrato): ?>
+    <div class="listado-contratos">
+        <h2>Listado de Contratos</h2>
+        <a href="agregar_contrato.php">Agregar Nuevo Contrato</a>
+        <table>
+            <thead>
                 <tr>
-                    <td><?php echo htmlspecialchars($contrato['propiedad']); ?></td>
-                    <td><?php echo htmlspecialchars($contrato['cliente']); ?></td>
-                    <td><?php echo htmlspecialchars($contrato['tipo_contrato']); ?></td>
-                    <td>$<?php echo number_format($contrato['precio'], 2); ?></td>
-                    <td><?php echo htmlspecialchars($contrato['fecha_inicio']); ?></td>
-                    <td><?php echo htmlspecialchars($contrato['fecha_fin']); ?></td>
-                    <td><?php echo htmlspecialchars($contrato['estado']); ?></td>
-                    <td>
-                        <?php if ($contrato['archivo']): ?>
-                            <a href="uploads/contratos/<?php echo htmlspecialchars($contrato['archivo']); ?>" target="_blank">📄 Ver Documento</a>
-                        <?php else: ?>
-                            No adjunto
-                        <?php endif; ?>
-                    </td>
-                    <td>
-                        <a href="editar_contrato.php?id=<?php echo $contrato['id']; ?>">Editar</a>
-                        <a href="#" onclick="confirmarEliminacion(<?php echo $contrato['id']; ?>)">Eliminar</a>
-                    </td>
+                    <th>Propiedad</th>
+                    <th>Cliente</th>
+                    <th>Tipo</th>
+                    <th>Precio</th>
+                    <th>Fecha Inicio</th>
+                    <th>Fecha Fin</th>
+                    <th>Estado</th>
+                    <th>Documento</th>
+                    <th>Acciones</th>
                 </tr>
-            <?php endforeach; ?>
-        </tbody>
-    </table>
-</select>
-<script>
-function confirmarEliminacion(contratoId) {
-    Swal.fire({
-        title: "¿Estás seguro?",
-        text: "Esta acción no se puede deshacer.",
-        icon: "warning",
-        showCancelButton: true,
-        confirmButtonColor: "#d33",
-        cancelButtonColor: "#3085d6",
-        confirmButtonText: "Sí, eliminar",
-        cancelButtonText: "Cancelar"
-    }).then((result) => {
-        if (result.isConfirmed) {
-            window.location.href = "eliminar_contrato.php?id=" + contratoId;
+            </thead>
+            <tbody>
+                <?php foreach ($contratos as $contrato): ?>
+                    <tr>
+                        <td><?php echo htmlspecialchars($contrato['propiedad']); ?></td>
+                        <td><?php echo htmlspecialchars($contrato['cliente']); ?></td>
+                        <td><?php echo htmlspecialchars($contrato['tipo_contrato']); ?></td>
+                        <td>$<?php echo number_format($contrato['precio'], 2); ?></td>
+                        <td><?php echo htmlspecialchars($contrato['fecha_inicio']); ?></td>
+                        <td><?php echo htmlspecialchars($contrato['fecha_fin']); ?></td>
+                        <td><?php echo htmlspecialchars($contrato['estado']); ?></td>
+                        <td>
+                            <?php if ($contrato['archivo']): ?>
+                                <a href="uploads/contratos/<?php echo htmlspecialchars($contrato['archivo']); ?>" target="_blank">📄 Ver Documento</a>
+                            <?php else: ?>
+                                No adjunto
+                            <?php endif; ?>
+                        </td>
+                        <td>
+                            <a href="editar_contrato.php?id=<?php echo $contrato['id']; ?>">Editar</a>
+                            <a href="#" onclick="confirmarEliminacion(<?php echo $contrato['id']; ?>)">Eliminar</a>
+                        </td>
+                    </tr>
+                <?php endforeach; ?>
+            </tbody>
+        </table>
+
+        <script>
+        function confirmarEliminacion(contratoId) {
+            Swal.fire({
+                title: "¿Estás seguro?",
+                text: "Esta acción no se puede deshacer.",
+                icon: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#d33",
+                cancelButtonColor: "#3085d6",
+                confirmButtonText: "Sí, eliminar",
+                cancelButtonText: "Cancelar"
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    window.location.href = "eliminar_contrato.php?id=" + contratoId;
+                }
+            });
         }
-    });
-}
-</script>
+        </script>
+
+    </div>
+
+</section>
 
 <?php include('../footer.php'); ?>

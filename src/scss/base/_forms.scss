@@ -6,6 +6,7 @@ input[type="password"],
 input[type="number"],
 input[type="email"],
 input[type="tel"],
+input[type="date"],
 textarea,
 select {
     width: 100%;
@@ -19,6 +20,26 @@ select {
         outline: none;
         border-color: v.$mainc;
     }
+}
+
+.imagenes {
+    display: inline-block;
+    padding: 1.2rem 1.8rem;
+    height: 100%;
+    background: transparent;
+    border: .2rem solid v.$mainc;
+    border-radius: 3rem;
+    cursor: pointer;
+    transition: .3s all ease;
+
+    &:hover {
+        background: v.$mainc;
+        color: v.$white;
+    }
+}
+
+input[type="file"] {
+    display: none;
 }
 
 input + input {
@@ -46,26 +67,6 @@ input + input {
 
     input[name="titulo"] {
         grid-column: span 4;
-    }
-
-    .imagenes {
-        display: inline-block;
-        padding: 1.2rem 1.8rem;
-        height: 100%;
-        background: transparent;
-        border: .2rem solid v.$mainc;
-        border-radius: 3rem;
-        cursor: pointer;
-        transition: .3s all ease;
-
-        &:hover {
-            background: v.$mainc;
-            color: v.$white;
-        }
-    }
-
-    input[name="imagenes[]"] {
-        display: none;
     }
 
     textarea {
@@ -186,4 +187,10 @@ input + input {
     textarea {
         resize: none;
     }
+}
+
+.contrato {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem 1rem;
 }

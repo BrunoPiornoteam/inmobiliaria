@@ -48,40 +48,44 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['action']) && $_POST['a
 }
 ?>
 
-<h1>Agregar Contrato</h1>
-<form method="POST" enctype="multipart/form-data">
-    <select name="cliente_id" id="cliente_id" required>
-        <option value="">Selecciona un cliente</option>
-        <?php foreach ($clientes as $cliente): ?>
-            <option value="<?php echo htmlspecialchars($cliente['id']); ?>">
-                <?php echo htmlspecialchars($cliente['nombre']); ?>
-            </option>
-        <?php endforeach; ?>
-    </select>
+<section class="dashboard-container">
+    <div class="contrato-content">
+        <h1>Agregar Contrato</h1>
+        <form method="POST" enctype="multipart/form-data" class="contrato">
+            <select name="cliente_id" id="cliente_id" required>
+                <option value="">Selecciona un cliente</option>
+                <?php foreach ($clientes as $cliente): ?>
+                    <option value="<?php echo htmlspecialchars($cliente['id']); ?>">
+                        <?php echo htmlspecialchars($cliente['nombre']); ?>
+                    </option>
+                <?php endforeach; ?>
+            </select>
 
-    <select name="propiedad_id" id="propiedad_id" required>
-        <option value="">Selecciona una propiedad</option>
-        <?php foreach ($propiedades as $propiedad): ?>
-            <option value="<?php echo htmlspecialchars($propiedad['id']); ?>">
-                <?php echo htmlspecialchars($propiedad['titulo']); ?>
-            </option>
-        <?php endforeach; ?>
-    </select>
+            <select name="propiedad_id" id="propiedad_id" required>
+                <option value="">Selecciona una propiedad</option>
+                <?php foreach ($propiedades as $propiedad): ?>
+                    <option value="<?php echo htmlspecialchars($propiedad['id']); ?>">
+                        <?php echo htmlspecialchars($propiedad['titulo']); ?>
+                    </option>
+                <?php endforeach; ?>
+            </select>
 
-    <select name="tipo_contrato" required>
-        <option value="venta">Venta</option>
-        <option value="alquiler">Alquiler</option>
-    </select>
+            <select name="tipo_contrato" required>
+                <option value="venta">Venta</option>
+                <option value="alquiler">Alquiler</option>
+            </select>
 
-    <input type="number" name="precio" placeholder="Precio" required>
-    <input type="date" name="fecha_inicio" required>
-    <input type="date" name="fecha_fin" required>
-    
-    <label>Adjuntar contrato (PDF, imagen):</label>
-    <input type="file" name="archivo" accept=".pdf,.jpg,.png,.jpeg">
+            <input type="number" name="precio" placeholder="Precio" required>
+            <input type="date" name="fecha_inicio" required>
+            <input type="date" name="fecha_fin" required>
+            
+            <input type="file" name="archivo" accept=".pdf,.jpg,.png,.jpeg" id="agregarImg">
+            <label class="imagenes" for="agregarImg">Adjuntar contrato (PDF, imagen):</label>
 
-    <button type="submit" name="action" value="add">Agregar Contrato</button>
-</form>
+            <button type="submit" name="action" value="add">Agregar Contrato</button>
+        </form>
 
-<a href="ver_contratos.php">Ver Contratos</a>
+        <a href="ver_contratos.php" class="link">Ver Contratos</a>
+    </div>
+</section>
 <?php include('../footer.php'); ?>

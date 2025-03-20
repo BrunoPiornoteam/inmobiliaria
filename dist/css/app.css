@@ -412,6 +412,7 @@ input[type=password],
 input[type=number],
 input[type=email],
 input[type=tel],
+input[type=date],
 textarea,
 select {
   width: 100%;
@@ -426,10 +427,30 @@ input[type=password]:focus,
 input[type=number]:focus,
 input[type=email]:focus,
 input[type=tel]:focus,
+input[type=date]:focus,
 textarea:focus,
 select:focus {
   outline: none;
   border-color: #d3a971;
+}
+
+.imagenes {
+  display: inline-block;
+  padding: 1.2rem 1.8rem;
+  height: 100%;
+  background: transparent;
+  border: 0.2rem solid #d3a971;
+  border-radius: 3rem;
+  cursor: pointer;
+  transition: 0.3s all ease;
+}
+.imagenes:hover {
+  background: #d3a971;
+  color: #fff;
+}
+
+input[type=file] {
+  display: none;
 }
 
 input + input {
@@ -457,23 +478,6 @@ input + input {
 }
 .agregar input[name=titulo] {
   grid-column: span 4;
-}
-.agregar .imagenes {
-  display: inline-block;
-  padding: 1.2rem 1.8rem;
-  height: 100%;
-  background: transparent;
-  border: 0.2rem solid #d3a971;
-  border-radius: 3rem;
-  cursor: pointer;
-  transition: 0.3s all ease;
-}
-.agregar .imagenes:hover {
-  background: #d3a971;
-  color: #fff;
-}
-.agregar input[name="imagenes[]"] {
-  display: none;
 }
 .agregar textarea {
   grid-column: span 4;
@@ -575,6 +579,12 @@ input + input {
 }
 .clientes textarea {
   resize: none;
+}
+
+.contrato {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem 1rem;
 }
 
 .login-container {
@@ -900,4 +910,14 @@ input + input {
 
 .propiedades-content {
   width: 90%;
+}
+
+.contrato-content {
+  width: 90%;
+  display: flex;
+  flex-direction: column;
+  gap: 4rem;
+}
+.contrato-content h1 {
+  margin-bottom: 0;
 }

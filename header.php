@@ -29,7 +29,7 @@ $user = $stmt->fetch(PDO::FETCH_ASSOC);
                 <i class="fas fa-home"></i> Inicio
             </a>
 
-            <div class="nav-item active">
+            <div class="nav-item" data-id="menu1">
                 <div class="nav-button">
                     <i class="fas fa-building"></i> Propiedades
                 </div>
@@ -41,7 +41,7 @@ $user = $stmt->fetch(PDO::FETCH_ASSOC);
                 </div>
             </div>
 
-            <div class="nav-item">
+            <div class="nav-item" data-id="menu2">
                 <div class="nav-button">
                     <i class="fas fa-users"></i> Clientes
                 </div>
@@ -51,7 +51,7 @@ $user = $stmt->fetch(PDO::FETCH_ASSOC);
                 </div>
             </div>
 
-            <div class="nav-item">
+            <div class="nav-item" data-id="menu3">
                 <div class="nav-button">
                     <i class="fas fa-file-contract"></i> Contratos
                 </div>
@@ -62,7 +62,7 @@ $user = $stmt->fetch(PDO::FETCH_ASSOC);
                 </div>
             </div>
 
-            <div class="nav-item">
+            <div class="nav-item" data-id="menu4">
                 <div class="nav-button">
                     <i class="fas fa-money-bill-wave"></i> Pagos
                 </div>
@@ -73,7 +73,7 @@ $user = $stmt->fetch(PDO::FETCH_ASSOC);
                 </div>
             </div>
 
-            <div class="nav-item">
+            <div class="nav-item" data-id="menu5">
                 <div class="nav-button">
                     <i class="fas fa-user"></i> Usuarios
                 </div>
@@ -83,7 +83,7 @@ $user = $stmt->fetch(PDO::FETCH_ASSOC);
                 </div>
             </div>
 
-            <div class="nav-item">
+            <div class="nav-item" data-id="menu6">
                 <div class="nav-button">
                     <i class="fas fa-calendar-alt"></i> Calendario
                 </div>
@@ -93,7 +93,7 @@ $user = $stmt->fetch(PDO::FETCH_ASSOC);
                 </div>
             </div>
 
-            <div class="nav-item">
+            <div class="nav-item" data-id="menu7">
                 <div class="nav-button">
                     <i class="fas fa-balance-scale"></i> Tasaciones
                 </div>
@@ -103,7 +103,7 @@ $user = $stmt->fetch(PDO::FETCH_ASSOC);
                 </div>
             </div>
 
-            <div class="nav-item">
+            <div class="nav-item" data-id="menu8">
                 <div class="nav-button">
                     <i class="fas fa-cog"></i> Configuración
                 </div>

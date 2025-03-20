@@ -1,0 +1,12 @@
+@use 'base/variables' as v;
+
+.contrato-content {
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    gap: 4rem;
+
+    h1 {
+        margin-bottom: 0;
+    }
+}
