@@ -1,4 +1,7 @@
-<?php session_start(); ?>
+<?php session_start(); 
+if (!isset($_SESSION['user_id'])) {
+    $_SESSION['user_id'] = null;
+} ?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
