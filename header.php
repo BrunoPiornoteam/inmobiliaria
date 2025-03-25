@@ -59,9 +59,9 @@ $user = $stmt->fetch(PDO::FETCH_ASSOC);
                     <i class="fas fa-file-contract"></i> Contratos
                 </div>
                 <div class="submenu">
-                    <a href="contratos.php">Ver contratos</a>
-                    <a href="crear_contrato.php">Adjuntar contrato</a>
-                    <a href="documentos.php">Documentos adjuntos</a>
+                    <a href="/inmobiliaria/contratos/agregar_contrato.php">Agregar contrato</a>
+                    <a href="/inmobiliaria/contratos/ver_contratos.php">Ver contratos</a>
+                    <a href="/inmobiliaria/contratos/documentos.php">Documentos adjuntos</a>
                 </div>
             </div>
 
