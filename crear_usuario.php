@@ -1,14 +1,7 @@
 <?php
-// Conexión a la base de datos (ajusta los parámetros)
-$host = 'localhost';
-$dbname = 'inmobiliaria';  
-$username = 'root';  
-$password = 'root';  
+include('../db.php');
 
 try {
-    $pdo = new PDO("mysql:host=$host;dbname=$dbname", $username, $password);
-    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    
     // Datos del nuevo usuario
     $nombre_usuario = 'admin';  
     $email = 'admin@inmobiliaria.com';  

@@ -94,10 +94,10 @@ $success = isset($_GET['success']) ? $_GET['success'] : 0;
             <option value="Vendida" <?= $propiedad['estado'] == 'Vendida' ? 'selected' : '' ?>>Vendida</option>
             <option value="Alquilada" <?= $propiedad['estado'] == 'Alquilada' ? 'selected' : '' ?>>Alquilada</option>
         </select>
-        <button type="submit" class="property-profile__button-status">Actualizar</button>
+        <button type="submit" class="property-profile__button-status" id="update-button">Actualizar</button>
     </form>
 </div>
-<script src="propiedades.js"></script>
+<script src="/inmobiliaria/src/js/propiedades.js"></script>
 
 <style>
 .property-profile {

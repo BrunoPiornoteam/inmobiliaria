@@ -91,8 +91,8 @@ $user = $stmt->fetch(PDO::FETCH_ASSOC);
                     <i class="fas fa-calendar-alt"></i> Calendario
                 </div>
                 <div class="submenu">
-                    <a href="calendario.php">Ver calendario</a>
-                    <a href="agregar_evento.php">Agregar evento</a>
+                    <a href="/inmobiliaria/calendario.php">Ver calendario</a>
+                    <a href="/inmobiliaria/agregar_evento.php">Agregar evento</a>
                 </div>
             </div>
 
@@ -112,7 +112,7 @@ $user = $stmt->fetch(PDO::FETCH_ASSOC);
                 </div>
                 <div class="submenu">
                     <a href="configuracion.php">Ajustes generales</a>
-                    <a href="soporte.php">Soporte</a>
+                    <a href="/inmobiliaria/soporte.php">Soporte</a>
                 </div>
             </div>
         </div>
