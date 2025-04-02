@@ -70,9 +70,9 @@ $user = $stmt->fetch(PDO::FETCH_ASSOC);
                     <i class="fas fa-money-bill-wave"></i> Pagos
                 </div>
                 <div class="submenu">
-                    <a href="pagos.php">Historial de pagos</a>
-                    <a href="metodos_pago.php">Métodos de pago</a>
-                    <a href="facturacion.php">Facturación</a>
+                    <a href="/inmobiliaria/pagos/historial.php">Historial de pagos</a>
+                    <a href="/inmobiliaria/pagos/metodos.php">Métodos de pago</a>
+                    <a href="/inmobiliaria/pagos/facturas.php">Facturación</a>
                 </div>
             </div>
 
@@ -81,8 +81,8 @@ $user = $stmt->fetch(PDO::FETCH_ASSOC);
                     <i class="fas fa-user"></i> Usuarios
                 </div>
                 <div class="submenu">
-                    <a href="usuarios.php">Lista de usuarios</a>
-                    <a href="agregar_usuario.php">Agregar usuario</a>
+                    <a href="/inmobiliaria/usuarios.php">Lista de usuarios</a>
+                    <a href="/inmobiliaria/agregar_usuario.php">Agregar usuario</a>
                 </div>
             </div>
 
