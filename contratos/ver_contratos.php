@@ -27,9 +27,9 @@ $contratos = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 <section class="dashboard-container">
     <div class="listado-contratos">
-        <h2>Listado de Contratos</h2>
-        <a href="agregar_contrato.php">Agregar Nuevo Contrato</a>
-        <table>
+        <h1 class="welcome-title">Listado de Contratos</h1>
+        <a href="agregar_contrato.php" class="button--blue">Agregar Nuevo Contrato</a>
+        <table class="dashboard-table">
             <thead>
                 <tr>
                     <th>Propiedad</th>

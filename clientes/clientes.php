@@ -76,7 +76,7 @@ try {
 
 <section class="dashboard-container">
     <div class="clientes-content">
-        <h1>Gestión de Clientes</h1>
+        <h1 class="welcome-title">Gestión de Clientes</h1>
         <form method="POST" class="clientes">
             <input type="text" name="nombre" placeholder="Nombre" required>
             <input type="email" name="email" placeholder="Email" required>
@@ -86,7 +86,7 @@ try {
             <button type="submit" name="action" value="add">Agregar Cliente</button>
         </form>
 
-        <h2 class="clientes-title">Lista de Clientes</h2>
+        <h2 class="welcome-title clientes-title">Lista de Clientes</h2>
         <table class="dashboard-table">
             <thead>
                 <tr>

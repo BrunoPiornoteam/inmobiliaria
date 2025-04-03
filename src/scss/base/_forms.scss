@@ -63,7 +63,7 @@ input + input {
     display: grid;
     grid-template-columns: repeat(5, 1fr);
     gap: 2rem 1rem;
-    width: 70%;
+    width: 90%;
 
     input[name="titulo"] {
         grid-column: span 4;
@@ -193,4 +193,16 @@ input + input {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 2rem 1rem;
+}
+
+.editar-propiedad {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;  
+    width: 90%;
+
+    textarea {
+        resize: none;
+        grid-column: span 2;
+    }
 }

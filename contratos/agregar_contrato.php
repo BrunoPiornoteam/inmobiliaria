@@ -50,7 +50,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['action']) && $_POST['a
 
 <section class="dashboard-container">
     <div class="contrato-content">
-        <h1>Agregar Contrato</h1>
+        <h1 class="welcome-title">Agregar Contrato</h1>
         <form method="POST" enctype="multipart/form-data" class="contrato">
             <select name="cliente_id" id="cliente_id" required>
                 <option value="">Selecciona un cliente</option>

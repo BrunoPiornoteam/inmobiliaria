@@ -24,35 +24,27 @@ if (!$propiedad) {
 }
 ?>
 
-<div class="edit-container">
+<div class="dashboard-container">
     <h1>Editar Propiedad</h1>
-    <form action="save_edit.php" method="POST" enctype="multipart/form-data">
+    <form class="editar-propiedad" action="save_edit.php" method="POST" enctype="multipart/form-data">
         <input type="hidden" name="id" value="<?= $id ?>">
 
-        <label>Título:</label>
-        <input type="text" name="titulo" value="<?= htmlspecialchars($propiedad['titulo']) ?>">
+        <input type="text" name="titulo" placeholder="Titulo" value="<?= htmlspecialchars($propiedad['titulo']) ?>">
 
-        <label>Precio (USD):</label>
-        <input type="number" name="precio" value="<?= htmlspecialchars($propiedad['precio']) ?>">
+        <input type="number" name="precio" placeholder="Precio (USD)" value="<?= htmlspecialchars($propiedad['precio']) ?>">
 
-        <label>Ubicación:</label>
-        <input type="text" name="ubicacion" value="<?= htmlspecialchars($propiedad['ubicacion']) ?>">
+        <input type="text" name="ubicacion" placeholder="Ubicación" value="<?= htmlspecialchars($propiedad['ubicacion']) ?>">
 
-        <label>Superficie (m²):</label>
-        <input type="number" name="tamano" value="<?= htmlspecialchars($propiedad['tamano']) ?>">
+        <input type="number" name="tamano" placeholder="Superficie (m²)" value="<?= htmlspecialchars($propiedad['tamano']) ?>">
 
-        <label>Dormitorios:</label>
-        <input type="number" name="dormitorios" value="<?= htmlspecialchars($propiedad['dormitorios']) ?>">
+        <input type="number" name="dormitorios" placeholder="Dormitorios" value="<?= htmlspecialchars($propiedad['dormitorios']) ?>">
 
-        <label>Baños:</label>
-        <input type="number" name="banos" value="<?= htmlspecialchars($propiedad['banos']) ?>">
+        <input type="number" name="banos" placeholder="Baños" value="<?= htmlspecialchars($propiedad['banos']) ?>">
 
-        <label>Características:</label>
-        <textarea name="caracteristicas"><?= htmlspecialchars($propiedad['caracteristicas'] ?? '') ?></textarea>
+        <textarea name="caracteristicas" placeholder="Características"><?= htmlspecialchars($propiedad['caracteristicas'] ?? '') ?></textarea>
 
-        <!-- Campo para imágenes -->
-        <label>Imágenes (separa con comas):</label>
-        <input type="file" name="imagenes[]" accept="image/*" multiple>
+        <input type="file" name="imagenes[]" accept="image/*" id="agregarImg" multiple>
+        <label for="agregarImg" class="imagenes">Agregar Imágenes</label>
 
         <button type="submit">Guardar cambios</button>
     </form>
