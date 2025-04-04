@@ -9,6 +9,7 @@ if (!isset($_SESSION['user_id'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Panel de Administración</title>
     <link rel="stylesheet" href="/inmobiliaria/dist/css/app.css">
+    <link rel="stylesheet" href="/inmobiliaria/dist/css/search.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
@@ -127,6 +128,7 @@ $user = $stmt->fetch(PDO::FETCH_ASSOC);
         <div class="search-container">
             <input type="text" id="search" placeholder="Buscar...">
             <button type="submit"><i class="fas fa-search"></i></button>
+            <div id="search-results" class="search-results-dropdown"></div>
         </div>
 
         <a href="logout.php" class="logout-button">
@@ -134,3 +136,7 @@ $user = $stmt->fetch(PDO::FETCH_ASSOC);
         </a>
     </div>
 </div>
+
+<script src="/inmobiliaria/dist/js/search.js"></script>
+</body>
+</html>
