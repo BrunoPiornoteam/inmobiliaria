@@ -1,4 +1,5 @@
 @use 'variables' as v;
+@use 'sass:color';
 
 /* Inputs */
 input[type="text"],
@@ -204,5 +205,101 @@ input + input {
     textarea {
         resize: none;
         grid-column: span 2;
+    }
+}
+
+// Search
+
+.search-container {
+    form {
+        display: flex;
+        position: relative;
+        width: 100%;
+    }
+
+    input {
+        flex: 1;
+        padding: 0.8rem;
+        border: 1px solid v.$grey;
+        border-radius: 0.4rem 0 0 0.4rem;
+        outline: none;
+        transition: border-color 0.2s ease;
+
+        &:focus {
+            border-color: v.$mainc;
+        }
+    }
+
+    button {
+        padding: 0.8rem 1.5rem;
+        background: v.$mainc;
+        border: 1px solid v.$mainc;
+        color: v.$white;
+        border-radius: 0 0.4rem 0.4rem 0;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+
+        &:hover {
+            background: color.adjust(v.$mainc, $lightness: -10%);
+        }
+    }
+}
+
+.search-results-dropdown {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: v.$white;
+    border: 1px solid v.$grey;
+    border-radius: 0 0 0.4rem 0.4rem;
+    box-shadow: 0 0.2rem 1rem rgba(0, 0, 0, 0.1);
+    max-height: 40rem;
+    overflow-y: auto;
+    z-index: 10;
+
+    &.active {
+        display: block;
+        animation: fadeIn 0.2s ease;
+    }
+}
+
+.search-result-item {
+    padding: 1rem 1.5rem;
+    border-bottom: 1px solid color.adjust(v.$grey, $lightness: 10%);
+    cursor: pointer;
+    transition: all 0.2s ease;
+    text-decoration: none;
+    color: v.$black;
+    display: block;
+
+    &:last-child {
+        border-bottom: none;
+    }
+
+    &:hover {
+        background-color: color.adjust(v.$grey, $lightness: 15%);
+    }
+
+    .result-title {
+        font-weight: 600;
+        margin-bottom: 0.5rem;
+    }
+
+    .result-type {
+        font-size: 0.875em;
+        color: v.$grey;
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-0.5rem);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
     }
 }

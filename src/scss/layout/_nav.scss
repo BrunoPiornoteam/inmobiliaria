@@ -9,6 +9,7 @@
 
 .nav-item {
     border-left: .2rem solid transparent;
+    cursor: pointer;
 
     &.active {
         border-left: .3rem solid v.$mainc;
@@ -42,6 +43,11 @@
 
     &:hover {
         background-color: v.$mainc;
+    }
+
+    i {
+        width: 2rem;
+        text-align: center;
     }
 }
 

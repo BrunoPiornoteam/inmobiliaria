@@ -598,6 +598,88 @@ input + input {
   grid-column: span 2;
 }
 
+.search-container form {
+  display: flex;
+  position: relative;
+  width: 100%;
+}
+.search-container input {
+  flex: 1;
+  padding: 0.8rem;
+  border: 1px solid #6d7b8d;
+  border-radius: 0.4rem 0 0 0.4rem;
+  outline: none;
+  transition: border-color 0.2s ease;
+}
+.search-container input:focus {
+  border-color: #d3a971;
+}
+.search-container button {
+  padding: 0.8rem 1.5rem;
+  background: #d3a971;
+  border: 1px solid #d3a971;
+  color: #fff;
+  border-radius: 0 0.4rem 0.4rem 0;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+.search-container button:hover {
+  background: rgb(198.935483871, 145.4193548387, 74.064516129);
+}
+
+.search-results-dropdown {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background: #fff;
+  border: 1px solid #6d7b8d;
+  border-radius: 0 0 0.4rem 0.4rem;
+  box-shadow: 0 0.2rem 1rem rgba(0, 0, 0, 0.1);
+  max-height: 40rem;
+  overflow-y: auto;
+  z-index: 10;
+}
+.search-results-dropdown.active {
+  display: block;
+  animation: fadeIn 0.2s ease;
+}
+
+.search-result-item {
+  padding: 1rem 1.5rem;
+  border-bottom: 1px solid rgb(137.124, 148.828, 163.876);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-decoration: none;
+  color: #2f353d;
+  display: block;
+}
+.search-result-item:last-child {
+  border-bottom: none;
+}
+.search-result-item:hover {
+  background-color: rgb(151.506, 161.782, 174.994);
+}
+.search-result-item .result-title {
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+.search-result-item .result-type {
+  font-size: 0.875em;
+  color: #6d7b8d;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-0.5rem);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
 .login-container {
   background: rgba(255, 255, 255, 0.9);
   padding: 40px;
@@ -754,6 +836,7 @@ input + input {
 
 .nav-item {
   border-left: 0.2rem solid transparent;
+  cursor: pointer;
 }
 .nav-item.active {
   border-left: 0.3rem solid #d3a971;
@@ -785,6 +868,10 @@ input + input {
 }
 .nav-button:hover {
   background-color: #d3a971;
+}
+.nav-button i {
+  width: 2rem;
+  text-align: center;
 }
 
 .submenu {
