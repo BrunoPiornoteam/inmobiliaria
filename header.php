@@ -127,7 +127,6 @@ $user = $stmt->fetch(PDO::FETCH_ASSOC);
 
         <div class="search-container">
             <input type="text" id="search" placeholder="Buscar...">
-            <button type="submit"><i class="fas fa-search"></i></button>
             <div id="search-results" class="search-results-dropdown"></div>
         </div>
 

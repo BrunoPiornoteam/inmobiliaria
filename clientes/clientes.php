@@ -112,8 +112,8 @@ try {
                             <td><?php echo htmlspecialchars($cliente['direccion']); ?></td>
                             <td><?php echo htmlspecialchars($cliente['notas'] ?? ''); ?></td>
                             <td>
-                                <a href="editar_cliente.php?id=<?php echo $cliente['id']; ?>" class="link">Editar</a>
-                                <a href="#" onclick="confirmDelete(<?php echo $cliente['id']; ?>); return false;" class="link">Eliminar</a>
+                                <a class="link" href="editar_cliente.php?id=<?php echo $cliente['id']; ?>">Editar</a>
+                                <a class="link" href="#" onclick="confirmDelete(<?php echo $cliente['id']; ?>); return false;">Eliminar</a>
                             </td>
 
                         </tr>

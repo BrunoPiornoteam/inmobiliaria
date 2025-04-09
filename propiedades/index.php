@@ -127,6 +127,7 @@ $propiedades = $stmt->fetchAll(PDO::FETCH_ASSOC);
                     <th>Ubicación</th>
                     <th>Tipo de operación</th>
                     <th>Estado</th>
+                    <th>Acciones</th>
                 </tr>
             </thead>
             <tbody>

@@ -820,15 +820,6 @@ input + input {
   border: 1px solid #ddd;
 }
 
-.listado-propiedades h2 {
-  margin: 2rem 0 0;
-}
-.listado-propiedades ul {
-  margin-top: 2rem;
-  padding: 0;
-  list-style: none;
-}
-
 .nav-container {
   display: flex;
   flex-direction: column;
@@ -877,7 +868,7 @@ input + input {
 .submenu {
   flex-direction: column;
   display: none;
-  padding: 1rem 4rem;
+  padding: 1rem 3rem 1rem 5rem;
 }
 .submenu a {
   padding: 1rem 0;
@@ -1176,6 +1167,38 @@ input + input {
 }
 .property-profile__back-button a {
   font-size: 2rem;
+}
+
+.listado-propiedades h2 {
+  margin: 2rem 0 0;
+}
+.listado-propiedades ul {
+  margin-top: 2rem;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  width: 80%;
+}
+.listado-propiedades ul li {
+  padding: 1rem;
+  border: 1px solid #d3a971;
+  border-radius: 3rem;
+  font-size: 1.4rem;
+  text-transform: uppercase;
+  color: #2f353d;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+}
+.listado-propiedades ul li:hover {
+  background: rgb(223.064516129, 192.5806451613, 151.935483871);
+  color: #fff;
 }
 
 .contrato-content {

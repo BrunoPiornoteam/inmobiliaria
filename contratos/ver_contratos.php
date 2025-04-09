@@ -61,8 +61,8 @@ $contratos = $stmt->fetchAll(PDO::FETCH_ASSOC);
                             <?php endif; ?>
                         </td>
                         <td>
-                            <a href="editar_contrato.php?id=<?php echo $contrato['id']; ?>">Editar</a>
-                            <a href="#" onclick="confirmarEliminacion(<?php echo $contrato['id']; ?>)">Eliminar</a>
+                            <a class="link" href="editar_contrato.php?id=<?php echo $contrato['id']; ?>">Editar</a>
+                            <a class="link" href="#" onclick="confirmarEliminacion(<?php echo $contrato['id']; ?>)">Eliminar</a>
                         </td>
                     </tr>
                 <?php endforeach; ?>
