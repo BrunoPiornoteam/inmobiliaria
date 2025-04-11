@@ -23,6 +23,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $tipo = htmlspecialchars($_POST['tipo']);
     $ubicacion = htmlspecialchars($_POST['ubicacion']);
     $tamano = filter_var($_POST['tamano'], FILTER_SANITIZE_NUMBER_FLOAT, FILTER_FLAG_ALLOW_FRACTION);
+    $iframe = $_POST['iframe'];
 
     if (!isset($_POST['tipo_operacion']) || !in_array($_POST['tipo_operacion'], ['Venta', 'Alquiler'])) {
         echo "<script>alert('Debe seleccionar si la propiedad es de Venta o Alquiler.');</script>";
@@ -50,8 +51,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $imagenes = implode(',', $imagenesGuardadas);  // Convertir las imágenes a un string separado por comas
 
     try {
-        $stmt = $pdo->prepare("INSERT INTO propiedades (titulo, descripcion, precio, tipo, ubicacion, tamano, tipo_operacion, imagenes) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
-        $stmt->execute([$titulo, $descripcion, $precio, $tipo, $ubicacion, $tamano, $tipo_operacion, $imagenes]);
+        $stmt = $pdo->prepare("INSERT INTO propiedades (titulo, descripcion, precio, tipo, ubicacion, tamano, tipo_operacion, imagenes, iframe) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)");
+        $stmt->execute([$titulo, $descripcion, $precio, $tipo, $ubicacion, $tamano, $tipo_operacion, $imagenes, $iframe]);
 
         echo "<script>
             Swal.fire({
@@ -96,6 +97,7 @@ $tiposPropiedades = $stmt->fetchAll(PDO::FETCH_COLUMN);
         </select>
         <input type="number" name="precio" placeholder="Precio" required step="1000">
         <input type="text" name="ubicacion" placeholder="Ubicación" required>
+        <textarea name="iframe" placeholder="Pega aquí el iframe del mapa (opcional)"></textarea>
         <input type="number" name="tamano" placeholder="Tamaño (m²)" required step="1">
         
         <button type="submit">Agregar Propiedad</button>

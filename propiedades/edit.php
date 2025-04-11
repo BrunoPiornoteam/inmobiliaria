@@ -48,6 +48,8 @@ if (!$propiedad) {
 
         <button type="submit">Guardar cambios</button>
     </form>
+
+    <div class="property-profile__back-button"><a href="single_propiedad.php?id=<?= $id ?>" class="link"><i class="fas fa-arrow-left"></i> Volver a la propiedad</a></div>
 </div>
 
 <?php include('../footer.php'); ?>

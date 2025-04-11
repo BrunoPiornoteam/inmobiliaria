@@ -6,6 +6,10 @@ namespace Composer\Autoload;
 
 class ComposerStaticInit007a56ce5d77eeb623b8cae82ac92f7f
 {
+    public static $files = array (
+        '5fe718a9d1647191d2cb3b26a199b937' => __DIR__ . '/..' . '/afipsdk/afip.php/src/Afip.php',
+    );
+
     public static $classMap = array (
         'Composer\\InstalledVersions' => __DIR__ . '/..' . '/composer/InstalledVersions.php',
         'Datamatrix' => __DIR__ . '/..' . '/tecnickcom/tcpdf/include/barcodes/datamatrix.php',
