@@ -303,3 +303,27 @@ input + input {
         transform: translateY(0);
     }
 }
+
+.historial-pagos {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+
+    textarea {
+        resize: none;
+        grid-column: span 2;
+    }
+}
+
+.metodos-pago {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+}
+
+.factura-pagos {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+}
+    

@@ -78,7 +78,7 @@ foreach ($pagos as $pago) {
 ?>
 
 <div class="dashboard-container">
-    <div class="content-wrapper">
+    <div class="pagos-container">
         <h1>Gestión de Pagos</h1>
 
         <!-- Resumen de pagos -->
@@ -108,7 +108,7 @@ foreach ($pagos as $pago) {
         <!-- Formulario para registrar pago -->
         <div class="form-container">
             <h2>Registrar Nuevo Pago</h2>
-            <form method="POST" class="styled-form">
+            <form method="POST" class="historial-pagos">
                 <input type="hidden" name="action" value="add">
                 
                 <div class="form-group">
@@ -170,7 +170,7 @@ foreach ($pagos as $pago) {
         <!-- Tabla de pagos -->
         <div class="table-container">
             <h2>Historial de Pagos</h2>
-            <table class="styled-table">
+            <table class="dashboard-table">
                 <thead>
                     <tr>
                         <th>ID</th>
@@ -220,128 +220,4 @@ function imprimirComprobante(id) {
     window.location.href = `imprimir_comprobante.php?id=${id}`;
 }
 </script>
-
-<style>
-.summary-cards {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 1rem;
-    margin-bottom: 2rem;
-}
-
-.summary-card {
-    background: white;
-    padding: 1.5rem;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-    text-align: center;
-}
-
-.summary-card i {
-    font-size: 2rem;
-    margin-bottom: 0.5rem;
-    color: #4a90e2;
-}
-
-.summary-card.total {
-    background: #4a90e2;
-    color: white;
-}
-
-.summary-card.total i {
-    color: white;
-}
-
-.styled-form {
-    background: white;
-    padding: 2rem;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-    margin-bottom: 2rem;
-}
-
-.form-group {
-    margin-bottom: 1rem;
-}
-
-.form-group label {
-    display: block;
-    margin-bottom: 0.5rem;
-    font-weight: 500;
-}
-
-.form-group input,
-.form-group select,
-.form-group textarea {
-    width: 100%;
-    padding: 0.5rem;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-}
-
-.badge {
-    padding: 0.25rem 0.5rem;
-    border-radius: 4px;
-    font-size: 0.875rem;
-}
-
-.badge-efectivo {
-    background: #28a745;
-    color: white;
-}
-
-.badge-transferencia {
-    background: #4a90e2;
-    color: white;
-}
-
-.badge-tarjeta {
-    background: #f39c12;
-    color: white;
-}
-
-.btn-view,
-.btn-print {
-    padding: 0.25rem 0.5rem;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    margin: 0 0.25rem;
-}
-
-.btn-view {
-    background: #4a90e2;
-    color: white;
-}
-
-.btn-print {
-    background: #28a745;
-    color: white;
-}
-
-.table-container {
-    background: white;
-    padding: 1.5rem;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-}
-
-.styled-table {
-    width: 100%;
-    border-collapse: collapse;
-}
-
-.styled-table th,
-.styled-table td {
-    padding: 0.75rem;
-    text-align: left;
-    border-bottom: 1px solid #ddd;
-}
-
-.styled-table th {
-    background: #f8f9fa;
-    font-weight: 600;
-}
-</style>
-
 <?php include('../footer.php'); ?>

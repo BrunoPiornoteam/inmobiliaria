@@ -1,0 +1,250 @@
+.pagos-container {
+    width: 90%;
+    
+    .summary-cards {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 1rem;
+    }
+    
+    .summary-card {
+        background: white;
+        padding: 1.5rem;
+        border-radius: .8rem;
+        box-shadow: 0 .2rem .4rem rgba(0,0,0,0.1);
+        text-align: center;
+
+        i {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: #4a90e2;
+        }
+
+        h3 {
+            margin-bottom: 1rem;
+        }
+
+        p {
+            line-height: 1;
+        }
+        
+        &.total {
+            background: #4a90e2;
+            color: white;
+            
+            i, p {
+                color: white;
+            }
+        }
+    }
+
+    .form-container {
+        margin-top: 4rem;
+
+        h2 {
+            margin-bottom: 1.8rem
+        }
+    }
+    
+    .badge {
+        padding: 0.5rem 1rem;
+        border-radius: 4px;
+        font-size: 0.875rem;
+        
+        &-efectivo {
+            background: #28a745;
+            color: white;
+        }
+        
+        &-transferencia {
+            background: #4a90e2;
+            color: white;
+        }
+        
+        &-tarjeta {
+            background: #f39c12;
+            color: white;
+        }
+    }
+    
+    .btn {
+        &-view, &-print {
+            padding: 0.25rem 0.5rem;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin: 0 0.25rem;
+        }
+        
+        &-view {
+            background: #4a90e2;
+            color: white;
+        }
+        
+        &-print {
+            background: #28a745;
+            color: white;
+        }
+    }
+
+    .table-container {
+        margin-top: 4rem;
+
+        h2 {
+            margin-bottom: 1.8rem;
+        }
+    }
+
+    // Metodos de pago
+    .badge {
+        padding: 0.25rem 0.5rem;
+        border-radius: 4px;
+        font-size: 0.875rem;
+    }
+    
+    .badge-efectivo { background: #28a745; color: white; }
+    .badge-transferencia { background: #007bff; color: white; }
+    .badge-tarjeta_credito { background: #6c757d; color: white; }
+    .badge-tarjeta_debito { background: #17a2b8; color: white; }
+    .badge-cheque { background: #ffc107; color: black; }
+    .badge-otro { background: #6c757d; color: white; }
+    
+    .badge-success { background: #28a745; color: white; }
+    .badge-danger { background: #dc3545; color: white; }
+    
+    .btn-edit,
+    .btn-toggle {
+        padding: 0.25rem 0.5rem;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        margin: 0 0.25rem;
+    }
+    
+    .btn-edit {
+        background: #4a90e2;
+        color: white;
+    }
+    
+    .btn-toggle {
+        background: #6c757d;
+        color: white;
+    }
+
+    // Facturacion
+    .badge {
+        padding: 0.25rem 0.5rem;
+        border-radius: 4px;
+        font-size: 0.875rem;
+    }
+    
+    .badge-pendiente {
+        background: #ffc107;
+        color: black;
+    }
+    
+    .badge-pagada {
+        background: #28a745;
+        color: white;
+    }
+    
+    .badge-cancelada {
+        background: #dc3545;
+        color: white;
+    }
+    
+    .badge-tipo {
+        background: #6c757d;
+        color: white;
+    }
+    
+    .btn-view,
+    .btn-download,
+    .btn-pay {
+        padding: 0.25rem 0.5rem;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        margin: 0 0.25rem;
+    }
+    
+    .btn-view {
+        background: #4a90e2;
+        color: white;
+    }
+    
+    .btn-download {
+        background: #28a745;
+        color: white;
+    }
+    
+    .btn-pay {
+        background: #ffc107;
+        color: black;
+    }
+    
+    .filters-container {
+        background: white;
+        padding: 1.5rem;
+        border-radius: 8px;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        margin-bottom: 1.5rem;
+        margin-top: 1.5rem;
+    }
+    
+    .filters-form {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 1rem;
+        align-items: end;
+    }
+    
+    .filter-group {
+        display: flex;
+        flex-direction: column;
+    }
+    
+    .filter-group label {
+        margin-bottom: 0.5rem;
+        font-weight: 500;
+    }
+    
+    .filter-group input,
+    .filter-group select {
+        padding: 0.5rem;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+    }
+    
+    .btn-filter,
+    .btn-reset,
+    .btn-export {
+        padding: 0.5rem 1rem;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+    }
+    
+    .btn-filter {
+        background: #4a90e2;
+        color: white;
+    }
+    
+    .btn-reset {
+        background: #6c757d;
+        color: white;
+    }
+    
+    .btn-export {
+        background: #28a745;
+        color: white;
+        margin-right: 0.5rem;
+    }
+    
+    .export-buttons {
+        margin-bottom: 1.5rem;
+    }
+}

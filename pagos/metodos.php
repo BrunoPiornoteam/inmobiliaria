@@ -42,13 +42,13 @@ $metodos = $stmt->fetchAll();
 ?>
 
 <div class="dashboard-container">
-    <div class="content-wrapper">
+    <div class="pagos-container">
         <h1>Métodos de Pago</h1>
 
         <!-- Formulario para agregar método de pago -->
         <div class="form-container">
             <h2>Agregar Método de Pago</h2>
-            <form method="POST" class="styled-form">
+            <form method="POST" class="metodos-pago">
                 <div class="form-group">
                     <label for="nombre">Nombre:</label>
                     <input type="text" id="nombre" name="nombre" required>
@@ -89,7 +89,7 @@ $metodos = $stmt->fetchAll();
         <!-- Tabla de métodos de pago -->
         <div class="table-container">
             <h2>Métodos de Pago Disponibles</h2>
-            <table class="styled-table">
+            <table class="dashboard-table">
                 <thead>
                     <tr>
                         <th>Nombre</th>
@@ -168,104 +168,5 @@ function toggleEstado(id, estadoActual) {
     });
 }
 </script>
-
-<style>
-.styled-form {
-    background: white;
-    padding: 2rem;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-    margin-bottom: 2rem;
-}
-
-.form-group {
-    margin-bottom: 1rem;
-}
-
-.form-group label {
-    display: block;
-    margin-bottom: 0.5rem;
-    font-weight: 500;
-}
-
-.checkbox-label {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    cursor: pointer;
-}
-
-.checkbox-label input[type="checkbox"] {
-    width: auto;
-}
-
-.form-group input,
-.form-group select,
-.form-group textarea {
-    width: 100%;
-    padding: 0.5rem;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-}
-
-.badge {
-    padding: 0.25rem 0.5rem;
-    border-radius: 4px;
-    font-size: 0.875rem;
-}
-
-.badge-efectivo { background: #28a745; color: white; }
-.badge-transferencia { background: #007bff; color: white; }
-.badge-tarjeta_credito { background: #6c757d; color: white; }
-.badge-tarjeta_debito { background: #17a2b8; color: white; }
-.badge-cheque { background: #ffc107; color: black; }
-.badge-otro { background: #6c757d; color: white; }
-
-.badge-success { background: #28a745; color: white; }
-.badge-danger { background: #dc3545; color: white; }
-
-.btn-edit,
-.btn-toggle {
-    padding: 0.25rem 0.5rem;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    margin: 0 0.25rem;
-}
-
-.btn-edit {
-    background: #4a90e2;
-    color: white;
-}
-
-.btn-toggle {
-    background: #6c757d;
-    color: white;
-}
-
-.table-container {
-    background: white;
-    padding: 1.5rem;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-}
-
-.styled-table {
-    width: 100%;
-    border-collapse: collapse;
-}
-
-.styled-table th,
-.styled-table td {
-    padding: 0.75rem;
-    text-align: left;
-    border-bottom: 1px solid #ddd;
-}
-
-.styled-table th {
-    background: #f8f9fa;
-    font-weight: 600;
-}
-</style>
 
 <?php include('../footer.php'); ?>

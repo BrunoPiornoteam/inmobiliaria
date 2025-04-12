@@ -79,7 +79,7 @@ foreach ($facturas as $factura) {
 ?>
 
 <div class="dashboard-container">
-    <div class="content-wrapper">
+    <div class="pagos-container">
         <h1>Facturación</h1>
 
         <!-- Resumen de facturación -->
@@ -147,7 +147,7 @@ foreach ($facturas as $factura) {
         <!-- Formulario para generar factura -->
         <div class="form-container">
             <h2>Generar Nueva Factura</h2>
-            <form method="POST" class="styled-form">
+            <form method="POST" class="factura-pagos">
                 <div class="form-group">
                     <label for="cliente_id">Cliente:</label>
                     <select name="cliente_id" id="cliente_id" required>
@@ -199,7 +199,7 @@ foreach ($facturas as $factura) {
         <!-- Tabla de facturas -->
         <div class="table-container">
             <h2>Historial de Facturas</h2>
-            <table class="styled-table">
+            <table class="dashboard-table">
                 <thead>
                     <tr>
                         <th>Número</th>
@@ -394,203 +394,5 @@ document.getElementById('filters-form').addEventListener('submit', function(e) {
 // Cargar facturas al inicio
 cargarFacturas();
 </script>
-
-<style>
-.summary-cards {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 1rem;
-    margin-bottom: 2rem;
-}
-
-.summary-card {
-    background: white;
-    padding: 1.5rem;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-    text-align: center;
-}
-
-.summary-card i {
-    font-size: 2rem;
-    margin-bottom: 0.5rem;
-    color: #4a90e2;
-}
-
-.summary-card.total {
-    background: #4a90e2;
-    color: white;
-}
-
-.summary-card.total i {
-    color: white;
-}
-
-.styled-form {
-    background: white;
-    padding: 2rem;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-    margin-bottom: 2rem;
-}
-
-.form-group {
-    margin-bottom: 1rem;
-}
-
-.form-group label {
-    display: block;
-    margin-bottom: 0.5rem;
-    font-weight: 500;
-}
-
-.form-group input,
-.form-group select,
-.form-group textarea {
-    width: 100%;
-    padding: 0.5rem;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-}
-
-.badge {
-    padding: 0.25rem 0.5rem;
-    border-radius: 4px;
-    font-size: 0.875rem;
-}
-
-.badge-pendiente {
-    background: #ffc107;
-    color: black;
-}
-
-.badge-pagada {
-    background: #28a745;
-    color: white;
-}
-
-.badge-cancelada {
-    background: #dc3545;
-    color: white;
-}
-
-.badge-tipo {
-    background: #6c757d;
-    color: white;
-}
-
-.btn-view,
-.btn-download,
-.btn-pay {
-    padding: 0.25rem 0.5rem;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    margin: 0 0.25rem;
-}
-
-.btn-view {
-    background: #4a90e2;
-    color: white;
-}
-
-.btn-download {
-    background: #28a745;
-    color: white;
-}
-
-.btn-pay {
-    background: #ffc107;
-    color: black;
-}
-
-.table-container {
-    background: white;
-    padding: 1.5rem;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-}
-
-.styled-table {
-    width: 100%;
-    border-collapse: collapse;
-}
-
-.styled-table th,
-.styled-table td {
-    padding: 0.75rem;
-    text-align: left;
-    border-bottom: 1px solid #ddd;
-}
-
-.styled-table th {
-    background: #f8f9fa;
-    font-weight: 600;
-}
-
-.filters-container {
-    background: white;
-    padding: 1.5rem;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-    margin-bottom: 1.5rem;
-}
-
-.filters-form {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 1rem;
-    align-items: end;
-}
-
-.filter-group {
-    display: flex;
-    flex-direction: column;
-}
-
-.filter-group label {
-    margin-bottom: 0.5rem;
-    font-weight: 500;
-}
-
-.filter-group input,
-.filter-group select {
-    padding: 0.5rem;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-}
-
-.btn-filter,
-.btn-reset,
-.btn-export {
-    padding: 0.5rem 1rem;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
-}
-
-.btn-filter {
-    background: #4a90e2;
-    color: white;
-}
-
-.btn-reset {
-    background: #6c757d;
-    color: white;
-}
-
-.btn-export {
-    background: #28a745;
-    color: white;
-    margin-right: 0.5rem;
-}
-
-.export-buttons {
-    margin-bottom: 1.5rem;
-}
-</style>
 
 <?php include('../footer.php'); ?>
