@@ -43,17 +43,20 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 });
 
+const header = document.querySelector(".header");
+const toggleMenu = document.getElementById("toggle-menu");
+
+// Si ya está abierta (agregado antes de cargar), la dejamos así
+if (document.documentElement.classList.contains("menu-open")) {
+    header.classList.add("open");
+}
+
 document.addEventListener("DOMContentLoaded", function () {
-    var header = document.querySelector(".header");
-    var toggleMenu = document.getElementById("toggle-menu");
-
-    if (localStorage.getItem("menuOpen") === "true") {
-        header.classList.add("open");
-    }
-
     toggleMenu.addEventListener("click", function () {
         header.classList.toggle("open");
 
-        localStorage.setItem("menuOpen", header.classList.contains("open"));
+        const isOpen = header.classList.contains("open");
+        localStorage.setItem("menuOpen", isOpen);
+        document.documentElement.classList.toggle("menu-open", isOpen);
     });
 });

@@ -434,6 +434,15 @@ select:focus {
   border-color: #d3a971;
 }
 
+label {
+  text-align: left;
+  padding: 0 2rem;
+  width: 100%;
+  display: block;
+  color: rgb(64.528, 72.816, 83.472);
+  font-weight: 600;
+}
+
 .imagenes {
   display: inline-block;
   padding: 1.2rem 1.8rem;
@@ -890,32 +899,52 @@ input + input {
 .submenu {
   flex-direction: column;
   display: none;
-  padding: 1rem 3rem 1rem 5rem;
 }
 .submenu a {
   padding: 1rem 0;
   color: #fff;
+  padding: 1rem 3rem 1rem 5rem;
+}
+.submenu a.active {
+  background-color: #d3a971;
 }
 
 .header {
   display: flex;
-  flex-direction: column;
-  gap: 4rem;
-  flex: 0;
   padding: 4rem 0;
   background: linear-gradient(135deg, #2f353d, #1f2a36);
 }
-.header .navigation-buttons {
-  display: none;
+.header .sidebar {
+  width: 0;
+  overflow: hidden;
+  opacity: 0;
+  transition: all 0.4s ease;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 4rem;
+  background: linear-gradient(135deg, #2f353d, #1f2a36);
 }
-.header.open {
-  flex: 2;
+.header .sidebar .nav-container,
+.header .sidebar .admin-profile {
+  opacity: 0;
+  transition: opacity 0.3s ease 0.2s;
 }
-.header.open .navigation-buttons {
-  display: block;
+.header.open .sidebar {
+  width: 250px;
+  overflow: auto;
+  opacity: 1;
+}
+.header.open .sidebar .nav-container,
+.header.open .sidebar .admin-profile {
+  opacity: 1;
 }
 .header.open .second-header {
-  width: 80%;
+  width: calc(100% - 250px);
+}
+.header .second-header {
+  width: 100%;
+  transition: width 0.4s ease;
 }
 @media (max-width: 768px) {
   .header {
