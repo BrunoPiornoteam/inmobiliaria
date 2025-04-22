@@ -50,8 +50,8 @@ $user = $stmt->fetch(PDO::FETCH_ASSOC);
                     <i class="fas fa-users"></i> Clientes
                 </div>
                 <div class="submenu">
-                    <a href="/inmobiliaria/clientes/clientes.php">Lista de clientes</a>
-                    <a href="/inmobiliaria/clientes/editar_cliente.php">Agregar cliente</a>
+                    <a href="/inmobiliaria/clientes/clientes.php">Agregar cliente</a>
+                    <a href="/inmobiliaria/clientes/lista_cliente.php">Lista de clientes</a>
                 </div>
             </div>
 
