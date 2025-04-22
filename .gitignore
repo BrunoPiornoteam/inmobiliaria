@@ -1,2 +1,11 @@
 includes/db.php
 node_modules
+# Ignorar archivo de configuración con claves privadas
+config.php
+
+# Otros archivos y directorios a ignorar
+.DS_Store
+.env
+node_modules/
+vendor/
+*.log

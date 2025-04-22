@@ -1,5 +1,10 @@
 </body>
 <script src="/inmobiliaria/dist/js/index.js" type="text/javascript"></script>
+
+<!-- Chatbot -->
+<link rel="stylesheet" href="/inmobiliaria/assets/css/chatbot.css">
+<script src="/inmobiliaria/assets/js/chatbot.js"></script>
+
 <div class="chat-container" id="chatContainer" style="display: none;">
     <div class="messages" id="messages">
         <?php
