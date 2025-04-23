@@ -559,9 +559,11 @@ input + input {
 }
 .listado fieldset label {
   text-wrap: nowrap;
+  padding: 0;
 }
 .listado fieldset select {
   margin: 0;
+  min-width: 15rem;
 }
 .listado button {
   width: fit-content;
@@ -588,6 +590,14 @@ input + input {
 }
 .clientes textarea {
   resize: none;
+}
+.clientes--filter {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+.clientes--filter .button--blue {
+  padding: 1.5rem 2rem;
 }
 
 .contrato {

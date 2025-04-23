@@ -161,10 +161,12 @@ input + input {
 
         label {
             text-wrap: nowrap;
+            padding: 0;
         }
 
         select {
             margin: 0;
+            min-width: 15rem;
         }
     }
 
@@ -196,6 +198,16 @@ input + input {
 
     textarea {
         resize: none;
+    }
+
+    &--filter {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+
+        .button--blue {
+            padding: 1.5rem 2rem;
+        }
     }
 }
 
