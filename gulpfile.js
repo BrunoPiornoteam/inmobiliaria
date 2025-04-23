@@ -1,22 +1,30 @@
-import { src, dest, watch, series} from 'gulp'
+import { src, dest, watch, series } from 'gulp'
 import * as dartSass from 'sass'
 import gulpSass from 'gulp-sass'
+import concat from 'gulp-concat'
+import terser from 'gulp-terser'
+import sourcemaps from 'gulp-sourcemaps'
 
-const sass = gulpSass(dartSass);
+const sass = gulpSass(dartSass)
 
-export function js(done) {
-    src('src/js/index.js')
-        .pipe(dest('dist/js'))
-    done()
+// --- JavaScript ---
+export function js() {
+    return src('src/js/**/*.js', { sourcemaps: true })
+        .pipe(concat('bundle.js'))
+        .pipe(terser())
+        .pipe(dest('dist/js', { sourcemaps: '.' }))
 }
 
-export function css(done) {
-    src('src/scss/app.scss', {sourcemaps: true})
+// --- SCSS ---
+export function css() {
+    return src('src/scss/app.scss')
+        .pipe(sourcemaps.init())
         .pipe(sass().on('error', sass.logError))
-        .pipe(dest('dist/css'), {sourcemaps: '.'})
-    done()
+        .pipe(sourcemaps.write('.'))
+        .pipe(dest('dist/css'))
 }
 
+// --- Watcher ---
 export function dev() {
     watch('src/scss/**/*.scss', css)
     watch('src/js/**/*.js', js)

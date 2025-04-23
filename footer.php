@@ -1,5 +1,5 @@
 </body>
-<script src="/inmobiliaria/dist/js/index.js" type="text/javascript"></script>
+<script src="/inmobiliaria/dist/js/bundle.js" type="text/javascript"></script>
 
 <!-- Chatbot -->
 <link rel="stylesheet" href="/inmobiliaria/assets/css/chatbot.css">

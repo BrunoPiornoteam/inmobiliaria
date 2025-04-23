@@ -26,5 +26,10 @@
     "gulp": "^5.0.0",
     "gulp-sass": "^6.0.0",
     "sass": "^1.85.0"
+  },
+  "dependencies": {
+    "gulp-concat": "^2.6.1",
+    "gulp-sourcemaps": "^3.0.0",
+    "gulp-terser": "^2.1.0"
   }
 }
